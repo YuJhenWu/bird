@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>鳥博士</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand container"  href="#">
+            <h2>鳥博士輸入系統</h2>
+            <a scope="col" href="http://pw-design.tw:8000/" title="回庫存表">回鳥表</a>
+          </a>
+        </div>
+      </nav>
+
+        <form action="." method="POST" name="order">
+          {% csrf_token %}
+            <!--鳥名稱相關-->
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label container">鳥種名</label>
+              <input type="text"  id="name"  name="name"  class="form-control" >
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label container">科別名</label>
+              <input type="text"  id="familyName"  name="familyName"  class="form-control" >
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label container">學名</label>
+                <input type="text"  id="scientificName"  name="scientificName"  class="form-control" >
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label container">英文名</label>
+              <input type="text"  id="englishName"  name="englishName"  class="form-control" >
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label container">別名</label>
+              <input type="text"  id="nickName"  name="nickName"  class="form-control" >
+            </div>
+            <!--鳥等級-->
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label container">保育等級</label>
+              <select  type="value" id="level"  name="level" class="form-select" >
+                <option selected></option>
+                <option value = 1>1瀕臨</option>
+                <option value = 2>2222</option>
+                <option value = 3>3333</option>
+              </select>
+            </div>
+            <!--鳥時間相關-->
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label container">起始月份</label>
+              <select  type="value" id="startMonth"  name="startMonth" class="form-select" >
+                <option selected></option>
+                <option value = 1>1月</option>
+                <option value = 2>2月</option>
+                <option value = 3>3月</option>
+                <option value = 4>4月</option>
+                <option value = 5>5月</option>
+                <option value = 6>6月</option>
+                <option value = 7>7月</option>
+                <option value = 8>8月</option>
+                <option value = 9>9月</option>
+                <option value = 10>10月</option>
+                <option value = 11>11月</option>
+                <option value = 12>12月</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label container">離開月份</label>
+              <select  type="value" id="endMonth"  name="endMonth" class="form-select" >
+                <option selected></option>
+                <option value = 1>1月</option>
+                <option value = 2>2月</option>
+                <option value = 3>3月</option>
+                <option value = 4>4月</option>
+                <option value = 5>5月</option>
+                <option value = 6>6月</option>
+                <option value = 7>7月</option>
+                <option value = 8>8月</option>
+                <option value = 9>9月</option>
+                <option value = 10>10月</option>
+                <option value = 11>11月</option>
+                <option value = 12>12月</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label container">季節</label>
+              <select  type="value" id="season"  name="season" class="form-select" >
+                <option selected></option>
+                <option value = 1>春</option>
+                <option value = 2>夏</option>
+                <option value = 3>秋</option>
+                <option value = 4>冬</option>
+              </select>
+            </div>
+            <!--鳥棲息地-->
+            
+            <!--鳥描述-->
+            <div class="form-floating">
+              <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+              <label for="floatingTextarea2">Comments</label>
+            </div>
+
+            <div class="mb-3">
+              <textarea id="description"  name="description"  class="form-control" style="height: 100px"></textarea>
+              <label for="floatingTextarea2">介紹鳥兒</label>
+            </div>
+            <!--鳥圖片相關-->
+            <div class="mb-3">
+              <label for="formFile" class="form-label container">鳥兒圖片</label>
+              <input type="file"  id="image"  name="image"  class="form-control" >
+              </label>
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputEmail1" class="form-label container">圖片來源</label>
+              <input type="text"  id="photoby"  name="photoby"  class="form-control" >
+            </div>
+
+            <div class="container">
+            <input type="submit" name="button" id="button" class="container btn btn-primary "value="入庫">
+            </div>
+            <div>
+              
+            </div>
+          </form>
+          <span style="color: red;">{{message}}</span>
+          
+
+          
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
