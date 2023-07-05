@@ -3,13 +3,27 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from order.models import BirdModel
 # Create your views here.
-def page(request):
-    return render(request,'page.html',locals())
 
+### homepage
 def index(request):
-    Bird = BirdModel.objects.all()
+    BirdModel.objects.all()
     return render(request,'index.html',locals())
 
+#### about
+def aboutus(request):
+    return render(request,'aboutus.html')
+
+def contactus(request):
+    return render(request,'contactus.html')
+
+#### birdlist
+def birdlist(request):
+    return render(request,'birdlist/birdlist.html')
+
+def birdinfo(request):
+    return render(request,'birdlist/birdinfo.html', locals())
+
+### DB
 def order(request):
     if request.method == "POST":
         #鳥名稱相關
