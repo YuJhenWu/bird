@@ -11,19 +11,65 @@ def index(request):
 
 #### about
 def aboutus(request):
-    return render(request,'aboutus.html')
+    return render(request,'about/aboutus.html')
 
 def contactus(request):
-    return render(request,'contactus.html')
+    return render(request,'about/contactus.html')
 
 #### birdlist
 def birdlist(request):
     return render(request,'birdlist/birdlist.html')
 
-def birdinfo(request):
+def birdinfo(request, sortType):
+    birds = [
+        {'COMMONNAME' : 'duck',
+        'SCIENTIFICNAME':'小水鴨',
+        'COUNTY':'台北',
+        'LOCALITY':'輔仁大學中美堂',
+        'LOCALITYTYPE':'校園',
+        'LATITUDE':'121.43219692276416',
+        'LONGITUDE':'25.038967086993015'},
+
+        {'COMMONNAME' : 'duck22',
+        'SCIENTIFICNAME':'小水鴨22',
+        'COUNTY':'台北22',
+        'LOCALITY':'輔仁大學中美堂22',
+        'LOCALITYTYPE':'校園22',
+        'LATITUDE':'121.43219692276416',
+        'LONGITUDE':'25.038967086993015'},]
     return render(request,'birdlist/birdinfo.html', locals())
 
-### DB
+### guide 
+def guide(request):
+    return render(request,'guide/guide.html')
+
+def basicKnowledge(request):
+    return render(request,'guide/basicKnowledge.html')
+
+def development(request):
+    return render(request,'guide/development.html')
+
+def equipment(request):
+    return render(request,'guide/equipment.html')
+
+def ethics(request):
+    return render(request,'guide/ethics.html')
+
+### realtime
+def realtime(request):
+    return render(request,'realtime/realtime.html')
+
+def info(request):
+    return render(request,'realtime/info.html')
+
+def place(request):
+    return render(request,'realtime/place.html')
+
+def recommend(request):
+    return render(request,'realtime/recommend.html')
+
+
+### database
 def order(request):
     if request.method == "POST":
         #鳥名稱相關

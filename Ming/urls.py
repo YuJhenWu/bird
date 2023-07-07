@@ -29,8 +29,22 @@ urlpatterns = [
     path('contactus/', views.contactus),
 
     ### birdlist 
-    path('birdlist/', views.birdlist),
-    path('birdinfo/', views.birdinfo),
+    path('birdlist/', views.birdlist), 
+    path('birdinfo/<int:sortType>/', views.birdinfo),
 
+    ### guide 
+    path('guide/', views.guide),
+    path('basicKnowledge/', views.basicKnowledge),
+    path('development/', views.development),
+    path('equipment/', views.equipment),
+    path('ethics/', views.ethics),
+    
+    ### realtime
+    path('realtime/', views.realtime),
+    path('info/', views.info),
+    path('place/', views.place),
+    path('recommend/', views.recommend),
+
+    #### database
     path('order/', views.order),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
