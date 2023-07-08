@@ -1,12 +1,16 @@
 from contextlib import _RedirectStream, redirect_stderr
+
 from django.shortcuts import render
 from django.http import HttpResponse
 from order.models import BirdModel
+import json
+import requests
 # Create your views here.
 
 ### homepage
 def index(request):
     BirdModel.objects.all()
+    weather_msg = get_data()
     return render(request,'index.html',locals())
 
 #### about
@@ -113,6 +117,43 @@ def order(request):
             )
         unit.save()  
     return render(request,'order.html',locals())
+def TWtownship():
+    place_data = ["臺北市", "新北市", "台中市", "臺南市", "高雄市", "基隆市",
+                  "桃園市", "新竹市", "新竹縣", "苗栗縣", "彰化縣", "南投縣",
+                  "雲林縣", "嘉義市", "嘉義縣", "屏東縣", "宜蘭縣", "花蓮縣",
+                  "台東縣", "澎湖縣", "金門縣", "連江縣"]
+    return place_data
+
+#### weather_API
+def get_data():
+    place = TWtownship()
+    url = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001"
+    params = {
+        "Authorization": "CWB-A38B5122-DF26-47EB-A652-1AD1A5643F5C",
+        "locationName": place[5],
+    }
+
+    response = requests.get(url, params=params)
+
+    if response.status_code == 200:
+        data = json.loads(response.text)
+    
+        location = data["records"]["location"][0]["locationName"]
+        weather_elements = data["records"]["location"][0]["weatherElement"]
+        weather_state = weather_elements[0]["time"][0]["parameter"]["parameterName"]
+        rain_prob = weather_elements[1]["time"][0]["parameter"]["parameterName"]
+        min_tem = weather_elements[2]["time"][0]["parameter"]["parameterName"]
+        comfort = weather_elements[3]["time"][0]["parameter"]["parameterName"]
+        max_tem = weather_elements[4]["time"][0]["parameter"]["parameterName"]
+
+        msg = {
+            'location' : location,
+            'weather_state': weather_state,
+            'rain_prob':rain_prob,
+            'min_tem':min_tem,
+            'comfort':comfort,
+            'max_tem':max_tem}
+    return msg 
 
 
-
+ 
