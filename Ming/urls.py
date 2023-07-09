@@ -20,10 +20,11 @@ from django.conf import settings
 from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
-
+    path('test/',views.test),
     ### homepage
     path('',views.index),
-
+    
+    path('TWmap/',views.TWmap),
     ### about
     path('aboutus/', views.aboutus),
     path('contactus/', views.contactus),

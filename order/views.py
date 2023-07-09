@@ -5,7 +5,11 @@ from django.http import HttpResponse
 from order.models import BirdModel
 import json
 import requests
-# Create your views here.
+### for test
+def test(request):
+    weather_msg = get_data()
+    recent_msg = recent()
+    return render(request,'test.html',locals())
 
 ### homepage
 def index(request):
@@ -25,22 +29,7 @@ def birdlist(request):
     return render(request,'birdlist/birdlist.html')
 
 def birdinfo(request, sortType):
-    birds = [
-        {'COMMONNAME' : 'duck',
-        'SCIENTIFICNAME':'小水鴨',
-        'COUNTY':'台北',
-        'LOCALITY':'輔仁大學中美堂',
-        'LOCALITYTYPE':'校園',
-        'LATITUDE':'121.43219692276416',
-        'LONGITUDE':'25.038967086993015'},
-
-        {'COMMONNAME' : 'duck22',
-        'SCIENTIFICNAME':'小水鴨22',
-        'COUNTY':'台北22',
-        'LOCALITY':'輔仁大學中美堂22',
-        'LOCALITYTYPE':'校園22',
-        'LATITUDE':'121.43219692276416',
-        'LONGITUDE':'25.038967086993015'},]
+    birds = bList()
     return render(request,'birdlist/birdinfo.html', locals())
 
 ### guide 
@@ -61,7 +50,9 @@ def ethics(request):
 
 ### realtime
 def realtime(request):
-    return render(request,'realtime/realtime.html')
+    birds = bList()
+    recent_msg = recent()
+    return render(request,'realtime/realtime.html',locals())
 
 def info(request):
     return render(request,'realtime/info.html')
@@ -72,6 +63,8 @@ def place(request):
 def recommend(request):
     return render(request,'realtime/recommend.html')
 
+def TWmap(request):
+    return render(request,'svgMap/TWmap.html')
 
 ### database
 def order(request):
@@ -117,12 +110,32 @@ def order(request):
             )
         unit.save()  
     return render(request,'order.html',locals())
+### 
 def TWtownship():
     place_data = ["臺北市", "新北市", "台中市", "臺南市", "高雄市", "基隆市",
                   "桃園市", "新竹市", "新竹縣", "苗栗縣", "彰化縣", "南投縣",
                   "雲林縣", "嘉義市", "嘉義縣", "屏東縣", "宜蘭縣", "花蓮縣",
                   "台東縣", "澎湖縣", "金門縣", "連江縣"]
     return place_data
+###
+def bList():
+    blist = [
+        {'COMMONNAME' : 'duck',
+        'SCIENTIFICNAME':'小水鴨',
+        'COUNTY':'台北',
+        'LOCALITY':'輔仁大學中美堂',
+        'LOCALITYTYPE':'校園',
+        'LATITUDE':'121.43219692276416',
+        'LONGITUDE':'25.038967086993015'},
+
+        {'COMMONNAME' : 'duck22',
+        'SCIENTIFICNAME':'小水鴨22',
+        'COUNTY':'台北22',
+        'LOCALITY':'輔仁大學中美堂22',
+        'LOCALITYTYPE':'校園22',
+        'LATITUDE':'121.43219692276416',
+        'LONGITUDE':'25.038967086993015'},]
+    return blist
 
 #### weather_API
 def get_data():
@@ -153,7 +166,27 @@ def get_data():
             'min_tem':min_tem,
             'comfort':comfort,
             'max_tem':max_tem}
+        
     return msg 
+### ebird_API
+def recent():
+    regionCode = 'TW'
+    url = "https://api.ebird.org/v2/data/obs/"+regionCode+"/recent"
+
+    payload={}
+    headers = {
+    'X-eBirdApiToken': 'ihe647qob150'
+    }
+    response = requests.request("GET", url, headers=headers, data=payload)
+    #print(response.text)
+    json_to_dict = json.loads(response.text)
+
+    #print(json_to_dict)
+    recent_datas = json_to_dict
+    
+    return recent_datas
+
+
 
 
  

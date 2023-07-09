@@ -10,74 +10,19 @@
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
           <a class="navbar-brand container"  href="#">
-            <h2>鳥類總庫資料</h2>
-            <a scope="col" href="http://pw-design.tw:8000/order/" title="入庫輸入">鳥類入庫</a>
+            <h2>test</h2>
           </a>
         </div>
       </nav>
-      <table class="table table-striped">
-        <tr>
-          <th scope="col">序號</th>
-          <!--鳥名稱相關-->
-          <th scope="col">鳥種名</th>
-          <th scope="col">科別名</th>
-          <th scope="col">學名</th>
-          <th scope="col">英文名</th>
-          <th scope="col">別名</th>
-          <!--鳥等級-->
-          <th scope="col">保育等級</th>
-          <!--鳥時間相關-->
-          <th scope="col">起始月份</th>
-          <th scope="col">離開月份</th>
-          <th scope="col">季節</th>
-          <!--鳥棲息地-->
-          <th scope="col">棲息地</th>
-          <!--鳥描述-->
-          <th scope="col">介紹鳥兒</th>
-          <!--鳥圖片相關-->
-          <th scope="col">鳥兒圖片</th>
-          <th scope="col">圖片來源</th>
-          
-          <!--編輯-->
-          <th scope="col">編輯</th>
-        </tr>
-        {% for item in items %}
-        <tr>
-          <!--鳥名稱相關-->
-          <td>{{item.id}}</td>
-          <td>{{item.name}}</td>
-          <td>{{item.familyName}}</td>
-          <td>{{item.englishName}}</td>
-          <td>{{item.nickName}}</td>
-          <!--鳥等級-->
-          <td>{{item.level}}</td>
-          <!--鳥時間相關-->
-          <td>{{item.startMonth}}</td>
-          <td>{{item.endMonth}}</td>
-          <td>{{item.season}}</td>
-          <!--鳥棲息地-->
-          <td>{{item.habitat}}</td>
-          <!--鳥描述-->
-          <td>{{item.description}}</td>
-          <!--鳥圖片相關-->
-          <td>{{item.image}}</td>
-          <td>{{item.photoby}}</td>
-        <td>
-          <a scope="col" href="" title="刪除">刪除</a>
-          <a scope="col" href="" title="修改">修改</a>
-          <a scope="col" href="" title="標籤">標籤</a>
-        </td>
-        </tr>
-        {% endfor %}
-      </table>
 
       <div class="container-fluid">
         
         <p>
-          測試TEST<a scope="col" href="http://127.0.0.1:8000/test/" title="test">test</a>
+          測試TEST
+          <a scope="col" href="http://127.0.0.1:8000/test/" title="test">test</a>
         </p>
 
-        <p>測試路徑用</p>
+        <p>測試路徑用
         <a scope="col" href="http://127.0.0.1:8000/aboutus/" title="aboutus">aboutus</a>
         <a scope="col" href="http://127.0.0.1:8000/contactus/" title="contactus">contactus</a>
         <a scope="col" href="http://127.0.0.1:8000/birdlist/" title="birdlist">birdlist</a>
@@ -91,16 +36,42 @@
         <a scope="col" href="http://127.0.0.1:8000/info/" title="info">info</a>
         <a scope="col" href="http://127.0.0.1:8000/place/" title="place">place</a>
         <a scope="col" href="http://127.0.0.1:8000/recommend/" title="recommend">recommend</a>
+      </p>
         <p>
-          測試map_svg<a scope="col" href="http://127.0.0.1:8000/TWmap/" title="TWmap">TWmap</a>
+          測試map_svg
+          <a scope="col" href="http://127.0.0.1:8000/TWmap/" title="TWmap">TWmap</a>
         </p>
         <div>
+          place_data = ["臺北市", "新北市", "台中市", "臺南市", "高雄市", "基隆市",
+                  "桃園市", "新竹市", "新竹縣", "苗栗縣", "彰化縣", "南投縣",
+                  "雲林縣", "嘉義市", "嘉義縣", "屏東縣", "宜蘭縣", "花蓮縣",
+                  "台東縣", "澎湖縣", "金門縣", "連江縣"]<br><br><br>
+          weather_API<br>
           {{weather_msg.location}}
           {{weather_msg.weather_state}}
           {{weather_msg.rain_prob}}%
           {{weather_msg.comfort}}
           {{weather_msg.max_tem}}°C
-          {{weather_msg.min_tem}}°C
+          {{weather_msg.min_tem}}°C<br><br><br>
+        </div>
+
+        <div>
+          ebird_API<br>抓台灣地區14天的資料<br><br>
+          {% for item in recent_msg %}
+          物種代碼 speciesCode   ：{{item.speciesCode}},
+          鳥名 comName   ：{{item.comName}},
+          學名 sciName   ：{{item.sciName}},
+          地點ID locId   ：{{item.locId}},
+          地點 locName   ：{{item.locName}},
+          觀察日 obsDt   ：{{item.obsDt}},
+          數量 howMany   ：{{item.howMany}},
+          緯度 lat   ：{{item.lat}},
+          經度 lng   ：{{item.lng}},
+          obsValid   ：{{item.obsValid}},
+          obsReviewed   ：{{item.obsReviewed}},
+          locationPrivate   ：{{item.locationPrivate}},
+          subId   ：{{item.subId}}<br>
+          {% endfor %}
         </div>
         
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
