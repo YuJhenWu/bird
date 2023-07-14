@@ -9,6 +9,15 @@ import requests
 def test(request):
     weather_msg = get_data()
     recent_msg = recent()
+    if request.method == "POST":
+        loc1= request.POST['loc1']
+        loc2= request.POST['loc2']
+        if(loc1 =="" or loc2 ==""):
+            distance_msg = "error"
+        elif(distance(loc1,loc2) !=  "error"):
+            distance_msg = distance(loc1,loc2)
+        else:
+            distance_msg = "error"
     return render(request,'test.html',locals())
 
 ### homepage
@@ -179,14 +188,38 @@ def recent():
     }
     response = requests.request("GET", url, headers=headers, data=payload)
     #print(response.text)
-    json_to_dict = json.loads(response.text)
+    json_to_dict_ebird = json.loads(response.text)
 
     #print(json_to_dict)
-    recent_datas = json_to_dict
+    recent_datas = json_to_dict_ebird
     
     return recent_datas
 
+### google_API
+def distance(loc1,loc2): 
+    params = {
+        'key':'AIzaSyDJCPBc_-meh9F9V3iSXKsHelmBOQeJ7aY',
+        'origins': loc1,
+        'destinations': loc2,
+        'mode': 'driving'} # mode: walking , driving , bicycling , transit
 
+    url = 'https://maps.googleapis.com/maps/api/distancematrix/json?&libraries=places,drawing,geometry&v=3&callback=initMap"'
+    response = requests.get(url, params=params)
 
+    print(response.text)
+    json_to_dict_google = json.loads(response.text)
+    
+    print(json_to_dict_google)
+    errorMSG = "error"
+    distance_data = {
+        #'destination_addresses' : json_to_dict_google['destination_addresses'][0], 
+        #'origin_addresses' : json_to_dict_google['origin_addresses'][0],
+        'destination_addresses' : loc1, 
+        'origin_addresses' : loc2,
+        'distance' : json_to_dict_google['rows'][0]['elements'][0]['distance']['text'],
+        'duration': json_to_dict_google['rows'][0]['elements'][0]['duration']['text']}
 
- 
+    if(json_to_dict_google['status'] == "OK" and json_to_dict_google['rows'][0]['elements'][0]['status'] == "OK"):
+        return distance_data
+    else:
+        return errorMSG
