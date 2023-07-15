@@ -1,0 +1,124 @@
+<html>
+  <head>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  </head>
+  <body>
+    <!--目前位置BTN-->
+    <div>
+      <button type="button" class="btn btn-primary" id = "button">目前位置</button>
+    </div>
+    <!--交通方式選單 預設是開車模式-->
+    <div>
+      <b>交通方式: </b>
+      <select id="mode" class="form-select form-select-sm" aria-label=".form-select-sm example">
+        <option selected value="DRIVING">開車</option>
+        <option value="WALKING">走路</option>
+        <option value="BICYCLING">自行車</option>
+        <option value="TRANSIT">大眾交通運輸</option>
+      </select>
+    </div>
+    <div id="map"></div>
+    
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key={{google_api_key}}&callback=initMap&v=weekly"
+      defer
+    ></script>
+
+    <!--CSS 可以改地圖大小-->
+    <style>
+        #map {
+            height: 100%; <!--改地圖大小-->
+            top: 10%;
+        }
+        html,
+        body {
+            width: 80%; <!--改整體大小-->
+            height: 80%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+
+    <!--JS 以下不能改-->
+    <script>
+        function initMap() {
+          //繪製路線圖
+          const directionsRenderer = new google.maps.DirectionsRenderer();
+          const directionsService = new google.maps.DirectionsService();
+          const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 14,
+            center: { lat: {{center_lan_lng.lat}}, lng: {{center_lan_lng.lng}} },
+          });
+          directionsRenderer.setMap(map);
+          calculateAndDisplayRoute(directionsService, directionsRenderer);
+          document.getElementById("mode").addEventListener("change", () => {
+            calculateAndDisplayRoute(directionsService, directionsRenderer);
+          });
+
+          //目前位置
+          infoWindow = new google.maps.InfoWindow();
+          const locationButton = document.getElementById("button");
+          locationButton.textContent = "目前所在位置";
+          locationButton.classList.add("custom-map-control-button");
+          map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+          locationButton.addEventListener("click", () => {
+            // Try HTML5 geolocation.
+            if (navigator.geolocation) {
+              navigator.geolocation.getCurrentPosition(
+                (position) => {
+                  const pos = {
+                    lat: position.coords.latitude,
+                    lng: position.coords.longitude,
+                  };
+                  var marker = new google.maps.Marker({
+                    position: pos,
+                    map: map
+                  });
+                  infoWindow.setPosition(pos);
+                  infoWindow.setContent("找到你的位置!");
+                  infoWindow.open(map,marker);
+                  
+                  map.setZoom(20);
+                  map.setCenter(pos);
+                },
+                () => {
+                  handleLocationError(true, infoWindow, map.getCenter());
+                }
+              );
+            } else {
+              // Browser doesn't support Geolocation
+              handleLocationError(false, infoWindow, map.getCenter());
+            }
+          });
+        }
+        
+        function calculateAndDisplayRoute(directionsService, directionsRenderer) {
+          const selectedMode = document.getElementById("mode").value;
+        
+          directionsService
+            .route({
+              origin: { lat: {{origin_lan_lng.lat}}, lng: {{origin_lan_lng.lng}} },
+              destination: { lat: {{destination_lan_lng.lat}}, lng: {{destination_lan_lng.lng}} },
+              travelMode: google.maps.TravelMode[selectedMode],
+            })
+            .then((response) => {
+              directionsRenderer.setDirections(response);
+            })
+            .catch((e) => window.alert("由於以下原因，路線請求失敗:" + status));
+        }
+        function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+          infoWindow.setPosition(pos);
+          infoWindow.setContent(
+            browserHasGeolocation
+              ? "Error: 地理定位服務失敗，請重新嘗試或是確認網路服務是否成功連線。"
+              : "Error: 您的瀏覽器不支持定位功能，請換成其他瀏覽器。"
+          );
+          infoWindow.open(map);
+        }
+        
+        window.initMap = initMap;
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+</html>
