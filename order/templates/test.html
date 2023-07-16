@@ -16,10 +16,11 @@
       </nav>
 
       <div class="container-fluid">
-
+        
         <p>
           測試TEST
           <a scope="col" href="http://127.0.0.1:8000/test/" title="test">test</a>
+          測試map
           <a scope="col" href="http://127.0.0.1:8000/map/" title="map">map</a>
         </p>
 
@@ -55,11 +56,14 @@
           <form action="." method="POST" name="distance_form">
           {% csrf_token %}
           google_API<br>路線規劃<br><br>
-          <label for="exampleInputEmail1" class="form-label container">起點</label>
-          <input type="text"  id="loc1"  name="loc1"  class="form-control" >
-          <label for="exampleInputEmail1" class="form-label container">終點</label>
-          <input type="text"  id="loc2"  name="loc2"  class="form-control" >
-          <input type="submit" name="button" id="button" class="container btn btn-primary "value="計算"><br>
+          <div class="mb-3">
+            起點<br>
+            <input type="text"  id="loc1"  name="loc1"  class="form-control" >
+            <div class="mb-3">
+            終點<br>
+            <input type="text"  id="loc2"  name="loc2"  class="form-control" >
+            <input type="submit" name="button" id="button" class="container btn btn-primary "value="計算">
+          </div>
         </form>
         {% if distance_msg != "error" %}
             起點：{{distance_msg.destination_addresses}}<br>
@@ -70,21 +74,13 @@
         {% if distance_msg == "error" %}
             請重新輸入起點和終點<br>
         {% endif %}
-
         </div>
+        <div id="map"></div>
+        <script
+          src="https://maps.googleapis.com/maps/api/js?key={{google_api_key}}&callback=initMap&v=weekly"
+          defer
+        ></script>
         <div>
-          <br><br><br>
-          <strong>Mode of Travel: </strong>
-          <select id="mode" onchange="calcRoute();">
-            <option value="DRIVING">Driving</option>
-            <option value="WALKING">Walking</option>
-            <option value="BICYCLING">Bicycling</option>
-            <option value="TRANSIT">Transit</option>
-          </select>
-          </div>
-
-
-        <!-- <div>
           ebird_API<br>抓台灣地區14天的資料<br><br>
           {% for item in recent_msg %}
           物種代碼 speciesCode   ：{{item.speciesCode}},
@@ -101,9 +97,39 @@
           locationPrivate   ：{{item.locationPrivate}},
           subId   ：{{item.subId}}<br>
           {% endfor %}
-        </div> -->
-
-
+        </div>
+        
+    <!--get browser's location-->
+    <script>
+      //Continuously take the position
+      function initMap() {
+        if (navigator.geolocation) {
+          navigator.geolocation.watchPosition(
+            (position) => {
+              //console.log(position.coords);
+              const pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+              };
+              console.log(pos);
+            },
+            () => {
+              handleLocationError(true);
+            }
+          );
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false);
+        }
+      }
+      function handleLocationError(browserHasGeolocation) {
+        if(browserHasGeolocation)
+          window.alert("Error: 地理定位服務失敗，請重新嘗試或是確認網路服務是否成功連線。");
+        else
+          window.alert( "Error: 您的瀏覽器不支持定位功能，請換成其他瀏覽器。");
+      }
+      window.initMap = initMap;
+    </script>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>

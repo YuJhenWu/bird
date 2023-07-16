@@ -10,6 +10,7 @@ import requests
 def test(request):
     weather_msg = weather()
     recent_msg = recent()
+    google_api_key = 'AIzaSyDJCPBc_-meh9F9V3iSXKsHelmBOQeJ7aY'
     if request.method == "POST":
 
         ################# params: (loc1, loc2)
@@ -23,14 +24,14 @@ def test(request):
             distance_msg = "error"
     return render(request,'test.html',locals())
 
-
+ 
 def map(request):
     google_api_key = 'AIzaSyDJCPBc_-meh9F9V3iSXKsHelmBOQeJ7aY'
     center_lan_lng ={ 'lat': 25.119136595732403, 'lng': 121.4708654841385 }#關渡自然公園
 
     ################# params: (origin_lan_lng, destination_lan_lng)
-    origin_lan_lng ={'lat': address_to_latlng('242新北市新莊區中正路510號')['lat'], 'lng': address_to_latlng('242新北市新莊區中正路510號')['lng']}
-    destination_lan_lng = {'lat': address_to_latlng('112台北市北投區關渡路55號')['lat'], 'lng': address_to_latlng('112台北市北投區關渡路55號')['lng']}
+    origin_lan_lng ={'lat': address_to_latlng('242新北市新莊區中正路510號')['lat'], 'lng': address_to_latlng('242新北市新莊區中正路510號')['lng']} 
+    destination_lan_lng = {'lat': address_to_latlng('112台北市北投區關渡路55號')['lat'], 'lng': address_to_latlng('112台北市北投區關渡路55號')['lng']} 
     #print(origin_lan_lng)
     #print(destination_lan_lng)
     return render(request,'map.html', locals())
@@ -56,7 +57,7 @@ def birdinfo(request, sortType):
     birds = bList()
     return render(request,'birdlist/birdinfo.html', locals())
 
-### guide
+### guide 
 def guide(request):
     return render(request,'guide/guide.html')
 
@@ -109,11 +110,11 @@ def order(request):
         #鳥描述
         description  = request.POST['description']
         #鳥圖片相關
-
+        
         image  = request.POST['image']
         photoby  = request.POST['photoby']
 
-        unit = BirdModel.objects.create(
+        unit = BirdModel.objects.create( 
             name=name,
             familyName=familyName,
             englishName=englishName,
@@ -132,10 +133,10 @@ def order(request):
             image=image,
             photoby=photoby
             )
-        unit.save()
+        unit.save()  
     return render(request,'order.html',locals())
 
-###
+### 
 def TWtownship():
     place_data = ["臺北市", "新北市", "台中市", "臺南市", "高雄市", "基隆市",
                   "桃園市", "新竹市", "新竹縣", "苗栗縣", "彰化縣", "南投縣",
@@ -163,7 +164,7 @@ def bList():
     return blist
 
 #### weather_API
-def weather():
+def weather(): 
 
     place = TWtownship()
     url = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001"
@@ -176,7 +177,7 @@ def weather():
 
     if response.status_code == 200:
         data = json.loads(response.text)
-
+    
         location = data["records"]["location"][0]["locationName"]
         weather_elements = data["records"]["location"][0]["weatherElement"]
         weather_state = weather_elements[0]["time"][0]["parameter"]["parameterName"]
@@ -192,7 +193,7 @@ def weather():
             'min_tem':min_tem,
             'comfort':comfort,
             'max_tem':max_tem}
-
+        
     return weather_msg
 
 ### ebird_API
@@ -210,13 +211,13 @@ def recent():
 
     #print(json_to_dict)
     recent_datas = json_to_dict_ebird
-
+    
     return recent_datas
 
 ### google_API
 
 ###計算兩點距離
-def distance(loc1,loc2):
+def distance(loc1,loc2): 
     params = {
         'key':'AIzaSyDJCPBc_-meh9F9V3iSXKsHelmBOQeJ7aY',
         'origins': loc1,
@@ -229,13 +230,13 @@ def distance(loc1,loc2):
 
     #print(response.text)
     json_to_dict_google = json.loads(response.text)
-
+    
     print(json_to_dict_google)
     errorMsg = "error"
     distance_datas = {
-        #'destination_addresses' : json_to_dict_google['destination_addresses'][0],
+        #'destination_addresses' : json_to_dict_google['destination_addresses'][0], 
         #'origin_addresses' : json_to_dict_google['origin_addresses'][0],
-        'destination_addresses' : loc1,
+        'destination_addresses' : loc1, 
         'origin_addresses' : loc2,
         'distance' : json_to_dict_google['rows'][0]['elements'][0]['distance']['text'],
         'duration': json_to_dict_google['rows'][0]['elements'][0]['duration']['text']}
@@ -244,7 +245,7 @@ def distance(loc1,loc2):
         return distance_datas
     else:
         return errorMsg
-
+    
 def address_to_latlng(loc):
     params = {
         'key':'AIzaSyDJCPBc_-meh9F9V3iSXKsHelmBOQeJ7aY',
@@ -258,3 +259,4 @@ def address_to_latlng(loc):
         'lng' :json_to_dict_lat_lng['results'][0]['geometry']['location']['lng']
     }
     return lat_lng
+    
