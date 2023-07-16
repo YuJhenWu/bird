@@ -16,7 +16,7 @@
       </nav>
 
       <div class="container-fluid">
-        
+
         <p>
           測試TEST
           <a scope="col" href="http://127.0.0.1:8000/test/" title="test">test</a>
@@ -24,20 +24,20 @@
         </p>
 
         <p>測試路徑用
-        <a scope="col" href="http://127.0.0.1:8000/aboutus/" title="aboutus">aboutus</a>
-        <a scope="col" href="http://127.0.0.1:8000/contactus/" title="contactus">contactus</a>
-        <a scope="col" href="http://127.0.0.1:8000/birdlist/" title="birdlist">birdlist</a>
-        <a scope="col" href="http://127.0.0.1:8000/birdinfo/0/" title="birdinfo">birdinfo</a>
-        <a scope="col" href="http://127.0.0.1:8000/guide/" title="guide">guide</a>
-        <a scope="col" href="http://127.0.0.1:8000/basicKnowledge/" title="basicKnowledge">basicKnowledge</a>
-        <a scope="col" href="http://127.0.0.1:8000/development/" title="development">development</a>
-        <a scope="col" href="http://127.0.0.1:8000/equipment/" title="equipment">equipment</a>
-        <a scope="col" href="http://127.0.0.1:8000/ethics/" title="ethics">ethics</a>
-        <a scope="col" href="http://127.0.0.1:8000/realtime/" title="realtime">realtime</a>
-        <a scope="col" href="http://127.0.0.1:8000/info/" title="info">info</a>
-        <a scope="col" href="http://127.0.0.1:8000/place/" title="place">place</a>
-        <a scope="col" href="http://127.0.0.1:8000/recommend/" title="recommend">recommend</a>
-      </p>
+          <a scope="col" href="http://127.0.0.1:8000/index_test/" title="index_test" >~暫定首頁畫面~</a>
+          <a scope="col" href="http://127.0.0.1:8000/birdinfo/0/" title="birdinfo">birdinfo</a>
+          <p>guide相關👉
+            <a scope="col" href="http://127.0.0.1:8000/basicKnowledge/" title="basicKnowledge">basicKnowledge</a>
+            <a scope="col" href="http://127.0.0.1:8000/development/" title="development">development</a>
+            <a scope="col" href="http://127.0.0.1:8000/equipment/" title="equipment">equipment</a>
+            <a scope="col" href="http://127.0.0.1:8000/ethics/" title="ethics">ethics</a>
+          </p>
+          <p>realtime相關👉
+            <a scope="col" href="http://127.0.0.1:8000/info/" title="info">info</a>
+            <a scope="col" href="http://127.0.0.1:8000/place/" title="place">place</a>
+            <a scope="col" href="http://127.0.0.1:8000/recommend/" title="recommend">recommend</a>
+          </p>
+        </p>
       <div>
         place_data = ["臺北市", "新北市", "台中市", "臺南市", "高雄市", "基隆市",
                 "桃園市", "新竹市", "新竹縣", "苗栗縣", "彰化縣", "南投縣",
@@ -70,7 +70,7 @@
         {% if distance_msg == "error" %}
             請重新輸入起點和終點<br>
         {% endif %}
-        
+
         </div>
         <div>
           <br><br><br>
@@ -82,7 +82,9 @@
             <option value="TRANSIT">Transit</option>
           </select>
           </div>
-        <div>
+
+
+        <!-- <div>
           ebird_API<br>抓台灣地區14天的資料<br><br>
           {% for item in recent_msg %}
           物種代碼 speciesCode   ：{{item.speciesCode}},
@@ -99,9 +101,9 @@
           locationPrivate   ：{{item.locationPrivate}},
           subId   ：{{item.subId}}<br>
           {% endfor %}
-        </div>
+        </div> -->
 
-    
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
   </body>
