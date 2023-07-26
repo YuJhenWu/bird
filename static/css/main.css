@@ -1,4 +1,4 @@
-/* 雲動畫效果 */
+/* 雲動畫效果
 svg {
   display: block;
   width: 100%;
@@ -6,7 +6,7 @@ svg {
   position: fixed;
   top: 0;
   left: 0;
-}
+} */
 
 .scrollElement {
   position: absolute;
@@ -18,26 +18,51 @@ svg {
 /*  */
 
 body {
-  background-image: url("../images/home_bg.png");
+  /* background-image: url("../images/home_bg.png");
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: fixed; */
   font-family: microsoft jhengHei;
+  background-color: rgb(255, 232, 201, 90%);
 }
 
+.banner {
+  background-image: url("../images/home_bg.png");
+  height: 100vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /* background-attachment: fixed; */
+}
+
+/* 導覽列的顏色與效果 */
 nav {
-  background-color: rgba(0, 0, 0, 0.35);
+  background-color: rgba(248, 249, 250, 0.45);
   transition: all 0.5s;
 }
-
 nav:hover {
-  background-color: rgba(0, 0, 0, 1);
+  background-color: rgb(252, 250, 252);
 }
 
 nav h1 {
   animation: showTxt 2s;
 }
+
+.my-nav {
+  box-shadow: 2px 2px 5px rgba(93, 83, 72, 0.3);
+}
+
+/* logo字的動畫效果 */
+@keyframes showTxt {
+  from {
+    transform: scale(0.5, 0.5) rotate(10deg);
+  }
+  to {
+    transform: scale(1, 1) rotate(0deg);
+  }
+}
+
 .text-orange {
   color: #b55135;
 }
@@ -55,18 +80,13 @@ nav h1 {
   border: 3px solid #3d1101;
   background-color: #efe9e7;
 }
-.search-btn {
-  width: 40px;
-  height: 32px;
-  background-color: #3d1101;
-  color: #efe9e7;
-  outline: none;
-  border: 2px solid #3d1101;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  right: 0;
+
+.tt {
+  font-size: 20px;
+  width: 30px;
+  height: 52px;
 }
+
 /* 天氣 */
 .temperature {
   width: 200px;
@@ -82,12 +102,38 @@ nav h1 {
   align-items: center;
 }
 
-/*  */
-@keyframes showTxt {
-  from {
-    transform: scale(0.5, 0.5) rotate(10deg);
-  }
-  to {
-    transform: scale(1, 1) rotate(0deg);
-  }
+/* 控制輪播圖大小 */
+.Carousel-dox {
+  height: 380px;
+  width: 540px;
+  background: hsla(38, 49%, 41%, 0.5);
+}
+
+/* 也是控制輪播圖大小 */
+/* .carousel .carousel-item {
+  height: 400px;
+  background-color: #777;
+} */
+/* .carousel-inner > .carousel-item .img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 400px;
+} */
+
+/* 按鈕 */
+.hitsearch {
+  padding: 4px 12px;
+  font-size: 16px;
+  border-radius: 16px;
+  background-color: #9abf7f;
+}
+
+.weather-box {
+  width: 480px;
+  height: 520px;
+  border: 2px solid #ccc;
+  background: #fff;
+  border-radius: 8px;
 }
