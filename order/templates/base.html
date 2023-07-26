@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="shortuct icon" href="../../../static/images/logo.png">
+
+    <title>候鳥來了- </title>
+    <!-- {% load static %} -->
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+  </head>
+
+  <body>
+    <!-- 導覽列 -->
+    <nav class="navbar navbar-expand-sm  navbar-light fixed-top my-nav">
+      <a href="http://127.0.0.1:8000/index_test/">
+      <img
+            src="{% static 'images/logo.png' %}"
+            class="img-fluid ms-4"
+            alt="logo"
+            title="候鳥logo"
+          />
+      </a>
+
+      <a href="http://127.0.0.1:8000/index_test/" class="nav-link">
+        <h1 class="navbar-brand" style="color:#B55135">
+          <strong>候鳥來了</strong>
+        </h1>
+      </a>
+      <!-- 漢堡選單 -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- 漢堡選單 Id -->
+      <div class="navbar-collapse collapse justify-content-end" id="navbarToggleExternalContent">
+
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="http://127.0.0.1:8000/" class="nav-link text-success">回到測試頁面</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="http://127.0.0.1:8000/index_test/" class="nav-link">首頁</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="http://127.0.0.1:8000/realtime/" class="nav-link">即刻賞鳥</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="http://127.0.0.1:8000/birdlist/" class="nav-link text-danger">候鳥圖鑑</a>
+          </li>
+
+
+          <li class="nav-item">
+          <a href="http://127.0.0.1:8000/guide/" class="nav-link">賞鳥須知</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="http://127.0.0.1:8000/about/" class="nav-link ">關於我們</a>
+          </li>
+        </ul>
+      </div>
+
+    </nav>
+
+    <!-- my-3上下邊距各推 -->
+    <div class="row my-3"></div>
+    <!-- 背景 banner -->
+    <div class="container-fluid banner">
+
+      <!-- my-5 = 6rem的距離 -->
+      <div class="row my-5"></div>
+
+      <!-- 熱門搜尋功能 -->
+      <script>
+        function displayText(buttonText) {
+            // 得到按鈕的文字内容
+            document.getElementById('bird-comName').value = buttonText;
+        }
+    </script>
+    <!-- 搜尋列 -->
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-auto">
+              <label>
+                <input class="search-bar" id="bird-comName" list="comName" name="search" id="search" placeholder="想找什麼鳥類呢?">
+              </label>
+              <datalist id="comName">
+                <option value="黃頭鷺">
+                <option value="黑面琵鷺">
+                <option value="紅隼">
+              </datalist>
+              <input type="image"
+                src="{% static 'images/search_icon.svg' %}"
+                alt="search"
+                width="30" height="26">
+                <!-- <input type="reset" name="reset" value="reset" />s -->
+          </div>
+        </div>
+        <div class="row">
+          <div class="col"></div>
+          <div class="col-auto my-2">
+            🔥熱門搜尋：
+            <button class="btn btn-success button hitsearch me-md-1" onclick="displayText('黑面琵鷺')">黑面琵鷺</button>
+            <button class="btn btn-success hitsearch me-md-1" onclick="displayText('黃頭鷺')">黃頭鷺</button>
+            <button class="btn btn-success hitsearch" onclick="displayText('🏸')">週六羽球場</button>
+          </div>
+          <div class="col">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="container-fluid">
+        <div class="row" style="background-color:#E59C73;">
+            <div class="col text-center text-light small my-2">
+            <img
+          src="{% static 'images/logo.png' %}"
+          class="img-fluid mx-2 "
+          alt="logo"
+          title="候鳥logo"
+            />
+            <!-- 地址：242新北市新莊區中正路510<br>
+            電話：+ 886 2 2905 2000 <br>
+            Email：migratory_birds@mail.fju.edu.tw <br> -->
+
+            候鳥來了 © 2023 All Rights Reserved.
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Bootstrap JS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+  </body>
+</html>

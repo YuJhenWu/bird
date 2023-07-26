@@ -29,19 +29,18 @@
 
     <!--CSS 可以改地圖大小-->
     <style>
-      #map {
-          height: 100%;  /* 改地圖大小 */
-          top: 10%;
-      }
-      html,
-      body {
-          width: 80%;   /*改整體大小*/
-          height: 80%;
-          margin: 0;
-          padding: 0;
-      }
-  </style>
-
+        #map {
+            height: 100%; <!--改地圖大小-->
+            top: 10%;
+        }
+        html,
+        body {
+            width: 80%; <!--改整體大小-->
+            height: 80%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 
     <!--JS 以下不能改-->
     <script>
@@ -81,7 +80,7 @@
                   infoWindow.setPosition(pos);
                   infoWindow.setContent("找到你的位置!");
                   infoWindow.open(map,marker);
-                  
+
                   map.setZoom(20);
                   map.setCenter(pos);
                 },
@@ -95,10 +94,10 @@
             }
           });
         }
-        
+
         function calculateAndDisplayRoute(directionsService, directionsRenderer) {
           const selectedMode = document.getElementById("mode").value;
-        
+
           directionsService
             .route({
               origin: { lat: {{origin_lan_lng.lat}}, lng: {{origin_lan_lng.lng}} },
@@ -110,7 +109,7 @@
             })
             .catch((e) => window.alert("由於以下原因，路線請求失敗:" + status));
         }
-        
+
         function handleLocationError(browserHasGeolocation, infoWindow, pos) {
           infoWindow.setPosition(pos);
           infoWindow.setContent(
@@ -120,7 +119,7 @@
           );
           infoWindow.open(map);
         }
-        
+
         window.initMap = initMap;
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
