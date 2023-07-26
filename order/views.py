@@ -2,6 +2,7 @@ from contextlib import _RedirectStream, redirect_stderr
 
 from django.shortcuts import render
 from django.http import HttpResponse
+from order import models
 from order.models import BirdModel
 import json
 import requests
@@ -48,6 +49,7 @@ def about(request):
 
 def index_test(request):
     return render(request,'index_test.html')
+
 
 #### birdlist
 def birdlist(request):
@@ -135,6 +137,22 @@ def order(request):
             )
         unit.save()  
     return render(request,'order.html',locals())
+
+def upload_img(request):
+    Birds = BirdModel.objects.all()
+    #findname
+    if request.method == 'POST':
+        mname = request.POST['name']  # get name
+        try :
+            #資料表.objects.get(查詢條件)
+            mbird = BirdModel.objects.get(name=mname)
+            #修改
+            mbird.photo = request.FILES.get('photo')
+            mbird.save()  # save image
+            return HttpResponse('成功新增'+mname+'照片')
+        except:
+            print('找不到'+mname)
+    return render(request, 'upload_img.html',locals())
 
 ### 
 def TWtownship():

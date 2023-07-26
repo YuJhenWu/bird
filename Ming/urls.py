@@ -27,7 +27,7 @@ urlpatterns = [
     path('',views.index),
     
     path('TWmap/',views.TWmap),
-     ### about
+    ### about
     path('about/', views.about),
     path('index_test/', views.index_test),
 
@@ -50,4 +50,5 @@ urlpatterns = [
 
     #### database
     path('order/', views.order),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    path('upload_img/', views.upload_img),
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
