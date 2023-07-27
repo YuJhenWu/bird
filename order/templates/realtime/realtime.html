@@ -9,91 +9,160 @@
     />
 
     <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="shortuct icon" href="../../../static/images/logo.png">
 
-    <title>候鳥來了 首頁</title>
-    {% load static %}
+    <title>候鳥來了-即刻賞鳥</title>
+    <!-- {% load static %} -->
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
-
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"
-    ></script>
-
-    <script type="text/javascript">
-      $(function () {
-        $("#film").modal("show");
-      });
-    </script>
-
   </head>
+
   <body>
     <!-- 導覽列 -->
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <nav class="navbar navbar-expand-sm  navbar-light fixed-top my-nav">
+      <a href="http://127.0.0.1:8000/index_test/">
       <img
             src="{% static 'images/logo.png' %}"
-            class="img-fluid"
+            class="img-fluid ms-4"
             alt="logo"
             title="候鳥logo"
           />
-          <h1 class="navbar-brand mx-2" style="color:#B55135">
-            <strong>候鳥來了</strong>
-          </h1>
-      <button
-        data-toggle="collapse"
-        data-target="#submenu"
-        class="navbar-toggler"
-      >
+      </a>
+
+      <a href="http://127.0.0.1:8000/index_test/" class="nav-link">
+        <h1 class="navbar-brand" style="color:#B55135">
+          <strong>候鳥來了</strong>
+        </h1>
+      </a>
+      <!-- 漢堡選單 -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
-      <div class="navbar-collapse collapse justify-content-end" id="submenu">
+      <!-- 漢堡選單 Id -->
+      <div class="navbar-collapse collapse justify-content-end" id="navbarToggleExternalContent">
+
         <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="http://127.0.0.1:8000/" class="nav-link text-success">回到測試頁面</a>
+          </li>
+
           <li class="nav-item">
             <a href="http://127.0.0.1:8000/index_test/" class="nav-link">首頁</a>
           </li>
-          <li class="nav-item">
-            <a href="http://127.0.0.1:8000/birdlist/" class="nav-link">候鳥圖鑑</a>
-          </li>
+
           <li class="nav-item">
             <a href="http://127.0.0.1:8000/realtime/" class="nav-link text-danger">即刻賞鳥</a>
           </li>
-         <li class="nav-item">
-          <a href="http://127.0.0.1:8000/guide/" class="nav-link">賞鳥須知</a>
-        </li>
+
           <li class="nav-item">
-            <a href="http://127.0.0.1:8000/about/" class="nav-link">關於我們</a>
+            <a href="http://127.0.0.1:8000/birdlist/" class="nav-link">候鳥圖鑑</a>
+          </li>
+
+
+          <li class="nav-item">
+          <a href="http://127.0.0.1:8000/guide/" class="nav-link">賞鳥須知</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="http://127.0.0.1:8000/about/" class="nav-link ">關於我們</a>
           </li>
         </ul>
       </div>
+
     </nav>
 
+    <style>
+      #banner{
+        background-image: url("../../../static/images/home_bg.png");
+        height: 300px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+    </style>
 
-    <div class="container-fluid">
-      <div class="row mt-5">
 
+  <script>
+        let storedVariable;
+        const displayVariable = document.getElementById("displayVariable");
+        // 存變數
+        function storeVariable(value) {
+            storedVariable = value;
+            displayVariable.textContent = storedVariable;
+        }
+    </script>
+
+
+
+    <!-- my-3上下邊距各推 -->
+    <div class="row my-3"></div>
+    <!-- 背景 banner -->
+    <div class="container-fluid" id="banner">
+      <div class="row my-5"></div>
+    </div>
+    <div class="container">
+      <div class="card-group">
+        <div class="card">
+          <img src="{% static 'images/c3.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">台江國家公園</h5>
+            <p class="card-text">台江國家公園距離電源怎麼樣作家春節就好水溝價格大連階段，集團知名文件，樂隊日報官員無比臺灣後來英國優惠ㄋ</p>
+            <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看路線圖</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="{% static 'images/c1.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">關渡自然公園</h5>
+            <p class="card-text">關渡自然公園最主要的目的在於保育關渡的濕地環境、復育關渡濕地風貌、找回關渡濕地原住民，並教育民眾認識關渡濕地</p>
+            <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看路線圖</button>
+          </div>
+        </div>
+        <div class="card">
+          <img src="{% static 'images/c2.jpg' %}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">成龍濕地</h5>
+            <p class="card-text scollapse show">成龍濕地位於雲林口湖鄉，每年都有成千上萬的候鳥飛來駐足棲息，有瀕臨絕種的黑面琵鷺，還有小燕鷗、紅隼等等</p>
+            <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看路線圖</button>
+          </div>
+        </div>
       </div>
+
+      <iframe
+      src="https://maps.google.com.tw/maps?f=1&hl=zh-TW&geocode=&q=106新北市新莊區中正路輔仁大學&z=15&output=embed&t="
+      width="100%"
+      height=450px"
+    ></iframe>
+
     </div>
-    <div class="row" >
-      <div class="col-1"></div>
-      <p> 即刻賞鳥realtime 動態網站</p>
-    </div>
-
-        {% for bird in birds %}
-        <p>{{bird.COMMONNAME}}</p>
-        {% endfor %}
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
+    <footer>
+      <div class="container-fluid">
+        <div class="row" style="background-color:#E59C73;">
+            <div class="col text-center text-light small my-2">
+            <img
+          src="{% static 'images/logo.png' %}"
+          class="img-fluid mx-2 "
+          alt="logo"
+          title="候鳥logo"
+            />
+            <!-- 地址：242新北市新莊區中正路510<br>
+            電話：+ 886 2 2905 2000 <br>
+            Email：migratory_birds@mail.fju.edu.tw <br> -->
+
+            候鳥來了 © 2023 All Rights Reserved.
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Bootstrap JS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
   </body>
 </html>
