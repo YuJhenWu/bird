@@ -37,7 +37,7 @@ def getMyloc(request):
 @csrf_exempt
 def test(request):
     global mypos  #global
-    google_api_key = 'AIzaSyDJCPBc_-meh9F9V3iSXKsHelmBOQeJ7aY'
+    google_api_key = ''
     recent_msg = recent()
     weather_msg = weather()
     myaddress = latlng_to_address(mypos)
@@ -62,7 +62,7 @@ def test(request):
     
 def map(request):
     global mypos  #global
-    google_api_key = 'AIzaSyDJCPBc_-meh9F9V3iSXKsHelmBOQeJ7aY'
+    google_api_key = ''
     center_lan_lng ={ 'lat': 25.119136595732403, 'lng': 121.4708654841385 }#關渡自然公園
     #################
     #################
@@ -76,7 +76,7 @@ def map(request):
 
 ### index
 def index(request):
-    google_api_key = 'AIzaSyDJCPBc_-meh9F9V3iSXKsHelmBOQeJ7aY'
+    google_api_key = ''
     weather_msg = weather()
     if request.method == "POST":
         weather_msg = weather()
@@ -88,7 +88,7 @@ def about(request):
     return render(request,'about/about.html')
 
 def index_test(request):
-    google_api_key = 'AIzaSyDJCPBc_-meh9F9V3iSXKsHelmBOQeJ7aY'
+    google_api_key = ''
     weather_msg = weather()
     if request.method == "POST":
         weather_msg = weather()
@@ -292,7 +292,7 @@ def recent():
 ###計算兩點距離
 def distance(loc1,loc2):
     params = {
-        'key':'AIzaSyDJCPBc_-meh9F9V3iSXKsHelmBOQeJ7aY',
+        'key':'',
         'origins': loc1,
         'destinations': loc2,
         'mode': 'driving', # mode: walking , driving , bicycling , transit
@@ -321,7 +321,7 @@ def distance(loc1,loc2):
     
 def address_to_latlng(loc):
     params = {
-        'key':'AIzaSyDJCPBc_-meh9F9V3iSXKsHelmBOQeJ7aY',
+        'key':'',
         'address' : loc}
     url = 'https://maps.googleapis.com/maps/api/geocode/json?'
     response = requests.get(url, params=params)
@@ -336,7 +336,7 @@ def address_to_latlng(loc):
 def latlng_to_address(lat_lng):
     lat_lng_value = str(lat_lng['lat'])+','+str(lat_lng['lng'])
     params = {
-        'key':'AIzaSyDJCPBc_-meh9F9V3iSXKsHelmBOQeJ7aY',
+        'key':'',
         'latlng' : lat_lng_value,
         'language':'zh-TW'}
     url = 'https://maps.googleapis.com/maps/api/geocode/json?'
@@ -350,7 +350,7 @@ def latlng_to_address(lat_lng):
 def get_administrative_area_level_1(lat_lng):
     lat_lng_value = str(lat_lng['lat'])+','+str(lat_lng['lng'])
     params = {
-        'key':'AIzaSyDJCPBc_-meh9F9V3iSXKsHelmBOQeJ7aY',
+        'key':'',
         'latlng' : lat_lng_value,
         'language':'zh-TW'}
     url = 'https://maps.googleapis.com/maps/api/geocode/json?'
