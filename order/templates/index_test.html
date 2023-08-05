@@ -14,11 +14,6 @@
 
     <title>候鳥來了 首頁</title>
     {% load static %}
-    <!-- <script
-      src="https://code.jquery.com/jquery-3.7.0.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"
-      ></script> -->
 
       <!-- icon css -->
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -130,17 +125,17 @@
             <div class="">
               <ul class="square" style="list-style-type: none;">
                 <li class="mb-3 mt-1">
-                  <h4>{{weather_msg.location}}</h4>
+                  <h4 id = "location">{{weather_msg.location}}</h4>
                 </li>
                 <!-- weather-item 為js傳回的對應天氣圖 -->
                 <li class="weather-item">
-                  <span>{{weather_msg.weather_state}}</span>
+                  <span id = "weather_state">{{weather_msg.weather_state}}</span>
                 </li>
                 <li class="mb-3">
                   <h1><i class="fa-solid fa-temperature-three-quarters"></i><span style="Font-size:24px;">　{{weather_msg.min_tem}}°C - {{weather_msg.max_tem}}°C</span></h1>
                 </li>
                 <li class="mb-4">
-                  <h4><i class="fa fa-cloud-showers-heavy"> <span style="font-family: '標楷體';">　{{weather_msg.rain_prob}}%</span></i></h4>
+                  <h4><i class="fa fa-cloud-showers-heavy"> <span style="font-family: '標楷體';" id = "rain_prob">　{{weather_msg.rain_prob}}%</span></i></h4>
                 </li>
               </ul>
             </div>
@@ -300,6 +295,70 @@
         </div>
       </div>
     </footer>
+    <!--get browser's location-->
+    <script>
+      //Continuously take the position
+      function initMap() {
+        if (navigator.geolocation) {
+          navigator.geolocation.watchPosition(
+            (position) => {
+              //console.log(position.coords);
+              const pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+              };
+              console.log(pos)
+              posJson = JSON.stringify(
+                { lat: pos.lat, 
+                  lng: pos.lng});
+              $.ajax({
+                url: "/getMyloc/",    
+                data: posJson,
+                dataType: "json",
+                headers: { "X-CSRFToken": "{{ csrf_token }}" },
+                contentType: 'application/json; charset=UTF-8',
+                type: "POST",
+                traditional: true,    // add when we pass list, dict
+                success: function (response) {
+                  console.log(response.message)
+                  if(response.message === 'success'){
+                    document.getElementById("location").innerHTML = response.weather_msg.location
+                    document.getElementById("weather_state").innerHTML = response.weather_msg.weather_state
+                    document.getElementById("rain_prob").innerHTML = response.weather_msg.rain_prob+'%'
+                    document.getElementById("comfort").innerHTML = response.weather_msg.comfort
+                    document.getElementById("max_tem").innerHTML = response.weather_msg.max_tem+'°C'
+                    document.getElementById("min_tem").innerHTML = response.weather_msg.min_tem+'°C'
+                  }
+                  
+                },
+                error: function (response) {
+                  if(response.message === 'success')
+                    console.log('Error');
+                }
+            });
+            },
+            () => {
+              handleLocationError(true);
+            }
+          );
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false);
+        }
+      }
+      function handleLocationError(browserHasGeolocation) {
+        if(browserHasGeolocation)
+          window.alert("Error: 地理定位服務失敗，請重新嘗試或是確認網路服務是否成功連線。");
+        else
+          window.alert( "Error: 您的瀏覽器不支持定位功能，請換成其他瀏覽器。");
+      }
+      
+    </script>
+    
+    <div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{key}}&callback=initMap"async="" defer=""></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script> 
+
 
 
 <!-- Optional JavaScript -->
