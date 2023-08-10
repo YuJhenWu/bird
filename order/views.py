@@ -1,53 +1,100 @@
 from contextlib import _RedirectStream, redirect_stderr
-
+from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.http import JsonResponse
 from order.models import BirdModel
 import json
 import requests
 
-### for test
-def test(request):
-    weather_msg = weather()
-    recent_msg = recent()
-    google_api_key = 'AIzaSyDJCPBc_-meh9F9V3iSXKsHelmBOQeJ7aY'
-    if request.method == "POST":
 
-        ################# params: (loc1, loc2)
-        loc1= request.POST['loc1']
-        loc2= request.POST['loc2']
-        if(loc1 =="" or loc2 ==""):
-            distance_msg = "error"
-        elif(distance(loc1,loc2) !=  "error"):
-            distance_msg = distance(loc1,loc2)
-        else:
-            distance_msg = "error"
+mypos = {'lat' : 22.63720862650741, 'lng' : 121.50426592818646}
+
+def getMyloc(request):
+    if request.method == "POST":
+        #posJson = request.POST.get('posJson')
+        posJson = json.loads(request.body.decode('utf-8'))
+        #print(posJson)
+        global mypos  #global
+        mypos = posJson
+        print('getMyloc')
+        print(mypos)
+        print(mypos.items())
+        #print(request.body.decode('utf-8'))
+        weather_msg = weather()
+        myaddress = latlng_to_address(mypos)
+        return JsonResponse({
+                'message': 'success',
+                'weather_msg': weather_msg,
+                'myaddress' : myaddress
+            })
+    else:
+        return JsonResponse({
+                'message': 'error'
+            })
+
+### for test
+@csrf_exempt
+def test(request):
+    global mypos  #global
+    google_api_key = ''
+    recent_msg = recent()
+    weather_msg = weather()
+    myaddress = latlng_to_address(mypos)
+    if request.method == "POST":
+        weather_msg = weather()
+        recent_msg = recent()
+        print(mypos)
+        myaddress = latlng_to_address(mypos)
+        print(myaddress)
+        if('distance_btn' in request.POST):
+            loc2 = request.POST['loc2']
+            print(loc2)
+            if(myaddress == "" or loc2 == ""):
+                distance_msg = 'error'
+            elif(distance(myaddress, loc2) !=  'error'):
+                distance_msg = distance(myaddress, loc2)
+            else:
+                distance_msg = 'error'
     return render(request,'test.html',locals())
 
- 
-def map(request):
-    google_api_key = 'AIzaSyDJCPBc_-meh9F9V3iSXKsHelmBOQeJ7aY'
-    center_lan_lng ={ 'lat': 25.119136595732403, 'lng': 121.4708654841385 }#關渡自然公園
 
+    
+def map(request):
+    global mypos  #global
+    google_api_key = ''
+    center_lan_lng ={ 'lat': 25.119136595732403, 'lng': 121.4708654841385 }#關渡自然公園
+    #################
+    #################
     ################# params: (origin_lan_lng, destination_lan_lng)
-    origin_lan_lng ={'lat': address_to_latlng('242新北市新莊區中正路510號')['lat'], 'lng': address_to_latlng('242新北市新莊區中正路510號')['lng']} 
+    origin_lan_lng ={'lat': mypos['lat'], 'lng':mypos['lng']} 
     destination_lan_lng = {'lat': address_to_latlng('112台北市北投區關渡路55號')['lat'], 'lng': address_to_latlng('112台北市北投區關渡路55號')['lng']} 
     #print(origin_lan_lng)
     #print(destination_lan_lng)
-    return render(request,'map.html', locals())
+    return render(request,'map.html', {'key':google_api_key,'center':center_lan_lng,'origin':origin_lan_lng,'destination':destination_lan_lng})
 
-### homepage
+
+### index
 def index(request):
-    BirdModel.objects.all()
+    google_api_key = ''
     weather_msg = weather()
-    return render(request,'index.html',locals())
+    if request.method == "POST":
+        weather_msg = weather()
+    return render(request,'index.html',{'weather_msg': weather_msg, 'key' : google_api_key})
+
 
 #### about
 def about(request):
     return render(request,'about/about.html')
 
 def index_test(request):
-    return render(request,'index_test.html')
+    google_api_key = ''
+    weather_msg = weather()
+    if request.method == "POST":
+        weather_msg = weather()
+    return render(request,'index_test.html',{'weather_msg': weather_msg, 'key' : google_api_key})
+
+
 
 #### birdlist
 def birdlist(request):
@@ -136,7 +183,23 @@ def order(request):
         unit.save()  
     return render(request,'order.html',locals())
 
-### 
+def upload_img(request):
+    Birds = BirdModel.objects.all()
+    #findname
+    if request.method == 'POST':
+        mname = request.POST['name']  # get name
+        try :
+            #資料表.objects.get(查詢條件)
+            mbird = BirdModel.objects.get(name=mname)
+            #修改
+            mbird.photo = request.FILES.get('photo')
+            mbird.save()  # save image
+            return HttpResponse('成功新增'+mname+'照片')
+        except:
+            print('找不到'+mname)
+    return render(request, 'upload_img.html',locals())
+
+### 捨棄
 def TWtownship():
     place_data = ["臺北市", "新北市", "台中市", "臺南市", "高雄市", "基隆市",
                   "桃園市", "新竹市", "新竹縣", "苗栗縣", "彰化縣", "南投縣",
@@ -164,20 +227,29 @@ def bList():
     return blist
 
 #### weather_API
-def weather(): 
-
-    place = TWtownship()
+def weather():
+    global mypos  #global
+    my_address_components = get_administrative_area_level_1(mypos)
+    print(str(my_address_components))
+    for index in range(0,10):
+        print(str(index))
+        if((my_address_components[index]['types'] == [ "administrative_area_level_2", "political" ])
+            or (my_address_components[index]['types'] == ['administrative_area_level_1', 'political'])):
+            mytown = str(my_address_components[index]['long_name'])
+            print(mytown)
+            mytown = mytown.replace('台','臺')
+            print(mytown)
+            break
     url = "https://opendata.cwb.gov.tw/api/v1/rest/datastore/F-C0032-001"
     params = {
         "Authorization": "CWB-A38B5122-DF26-47EB-A652-1AD1A5643F5C",
-        "locationName": place[5],################# params: (myloc)
+        "locationName": mytown,
     }
 
     response = requests.get(url, params=params)
 
     if response.status_code == 200:
         data = json.loads(response.text)
-    
         location = data["records"]["location"][0]["locationName"]
         weather_elements = data["records"]["location"][0]["weatherElement"]
         weather_state = weather_elements[0]["time"][0]["parameter"]["parameterName"]
@@ -195,6 +267,7 @@ def weather():
             'max_tem':max_tem}
         
     return weather_msg
+
 
 ### ebird_API
 def recent():
@@ -217,9 +290,9 @@ def recent():
 ### google_API
 
 ###計算兩點距離
-def distance(loc1,loc2): 
+def distance(loc1,loc2):
     params = {
-        'key':'AIzaSyDJCPBc_-meh9F9V3iSXKsHelmBOQeJ7aY',
+        'key':'',
         'origins': loc1,
         'destinations': loc2,
         'mode': 'driving', # mode: walking , driving , bicycling , transit
@@ -236,8 +309,8 @@ def distance(loc1,loc2):
     distance_datas = {
         #'destination_addresses' : json_to_dict_google['destination_addresses'][0], 
         #'origin_addresses' : json_to_dict_google['origin_addresses'][0],
-        'destination_addresses' : loc1, 
-        'origin_addresses' : loc2,
+        'origin_addresses' : loc1, 
+        'destination_addresses' : loc2,
         'distance' : json_to_dict_google['rows'][0]['elements'][0]['distance']['text'],
         'duration': json_to_dict_google['rows'][0]['elements'][0]['duration']['text']}
 
@@ -248,7 +321,7 @@ def distance(loc1,loc2):
     
 def address_to_latlng(loc):
     params = {
-        'key':'AIzaSyDJCPBc_-meh9F9V3iSXKsHelmBOQeJ7aY',
+        'key':'',
         'address' : loc}
     url = 'https://maps.googleapis.com/maps/api/geocode/json?'
     response = requests.get(url, params=params)
@@ -259,4 +332,32 @@ def address_to_latlng(loc):
         'lng' :json_to_dict_lat_lng['results'][0]['geometry']['location']['lng']
     }
     return lat_lng
+
+def latlng_to_address(lat_lng):
+    lat_lng_value = str(lat_lng['lat'])+','+str(lat_lng['lng'])
+    params = {
+        'key':'',
+        'latlng' : lat_lng_value,
+        'language':'zh-TW'}
+    url = 'https://maps.googleapis.com/maps/api/geocode/json?'
+    response = requests.get(url, params=params)
+    #print(response.text)
+    json_to_dict_address = json.loads(response.text)
+    address = json_to_dict_address['results'][0]['formatted_address']
+    print(address)
+    return address
+
+def get_administrative_area_level_1(lat_lng):
+    lat_lng_value = str(lat_lng['lat'])+','+str(lat_lng['lng'])
+    params = {
+        'key':'',
+        'latlng' : lat_lng_value,
+        'language':'zh-TW'}
+    url = 'https://maps.googleapis.com/maps/api/geocode/json?'
+    response = requests.get(url, params=params)
+    #print(response.text)
+    json_to_dict_address = json.loads(response.text)
+    address_components = json_to_dict_address['results'][0]['address_components']
+    print(address_components)
+    return address_components
     

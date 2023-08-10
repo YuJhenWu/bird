@@ -9,91 +9,364 @@
     />
 
     <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="shortuct icon" href="../../../static/images/logo.png">
 
-    <title>候鳥來了 首頁</title>
+    <title>候鳥來了-即刻賞鳥</title>
     {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+    <!-- icon css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"
-    ></script>
 
-    <script type="text/javascript">
-      $(function () {
-        $("#film").modal("show");
-      });
+    <link rel="stylesheet" type="text/css" href="../../../static/css/main.css" />
+  </head>
+
+  <body>
+  <!-- 導覽列 -->
+  <nav class="navbar navbar-expand-md  navbar-light fixed-top my-nav">
+    <a href="http://127.0.0.1:8000/index_test/">
+    <!-- <img
+          src="{% static 'images/logo.png' %}"
+          class="img-fluid ms-4"
+          alt="logo"
+          title="候鳥logo"
+        /> -->
+        <img
+          src="../../static/images/logo.png"
+          class="img-fluid ms-4 logo_size"
+          alt="候鳥logo"
+          title="回首頁"
+          style="font-size:0;"
+        />
+    </a>
+
+    <a href="http://127.0.0.1:8000/index_test/" class="nav-link">
+      <h1 class="navbar-brand" style="color : #B55135;">
+        <strong>候鳥來了</strong>
+      </h1>
+    </a>
+    <!-- 漢堡選單 -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent"
+      aria-controls="navbarToggleExternalContent" aria-expanded="false"  aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- 漢堡選單 Id -->
+    <div class="navbar-collapse collapse justify-content-end" id="navbarToggleExternalContent">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a href="http://127.0.0.1:8000/" class="nav-link text-success">回到測試頁面</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="http://127.0.0.1:8000/index_test/" class="nav-link"><i class="fa fa-home"></i>首頁</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="http://127.0.0.1:8000/realtime/" class="nav-link text-danger"><i class="fa-solid fa-dove"></i>即刻賞鳥</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="http://127.0.0.1:8000/birdlist/" class="nav-link"><i class="fa fa-book"></i>候鳥圖鑑</i></a>
+        </li>
+
+        <li class="nav-item">
+        <a href="http://127.0.0.1:8000/guide/" class="nav-link"><i class="fa fa-camera-retro"></i>賞鳥須知</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="http://127.0.0.1:8000/about/" class="nav-link "><i class="fa fa-address-book"></i></i>關於我們</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+    <!-- <style>
+      #banner{
+        background-image: url("../../../static/images/home_bg.png");
+        height: 300px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+    </style> -->
+
+
+  <script>
+        let storedVariable;
+        const displayVariable = document.getElementById("displayVariable");
+        // 存變數
+        function storeVariable(value) {
+            storedVariable = value;
+            displayVariable.textContent = storedVariable;
+        }
     </script>
 
-  </head>
-  <body>
-    <!-- 導覽列 -->
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
-      <img
-            src="{% static 'images/logo.png' %}"
-            class="img-fluid"
-            alt="logo"
-            title="候鳥logo"
-          />
-          <h1 class="navbar-brand mx-2" style="color:#B55135">
-            <strong>候鳥來了</strong>
-          </h1>
-      <button
-        data-toggle="collapse"
-        data-target="#submenu"
-        class="navbar-toggler"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="navbar-collapse collapse justify-content-end" id="submenu">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a href="http://127.0.0.1:8000/index_test/" class="nav-link">首頁</a>
-          </li>
-          <li class="nav-item">
-            <a href="http://127.0.0.1:8000/birdlist/" class="nav-link">候鳥圖鑑</a>
-          </li>
-          <li class="nav-item">
-            <a href="http://127.0.0.1:8000/realtime/" class="nav-link text-danger">即刻賞鳥</a>
-          </li>
-         <li class="nav-item">
-          <a href="http://127.0.0.1:8000/guide/" class="nav-link">賞鳥須知</a>
-        </li>
-          <li class="nav-item">
-            <a href="http://127.0.0.1:8000/about/" class="nav-link">關於我們</a>
-          </li>
-        </ul>
+      <!--  -->
+      <div class="row my-5"></div>
+      <div class="row my-5" style=" justify-content: center;">
+        <div class="Rectangle">
+          <i class="fa-solid fa-dove text-orange" style=" font-size: 36px;"></i>
+          <span style="color: #A24F49; font-size: 36px;">
+          即刻賞鳥</span>
+        </div>
       </div>
-    </nav>
 
+    <!-- my-3上下邊距各推 -->
+    <div class="row my-3"></div>
 
-    <div class="container-fluid">
-      <div class="row mt-5">
+    <!-- 北區 -->
+    <div class="container">
+      <div class="col-12 my-3 border-bottom ">
+        <h3><i class="fa-solid fa-compass" style="color: #20417e;"></i> 北部地區</h3>
+      </div>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card h-100">
+            <img src="../../../static/images/n2.jpg" class="card-img-top" alt="關渡自然公園照片">
+            <span class="small text-secondary">(照片取自-關渡自然公園)</span>
+            <div class="card-body">
+              <h5 class="card-title">關渡自然公園</h5>
+              <p class="card-text">關渡自然公園位在淡水河與基隆河匯流處東岸關渡堤防內，為一個具有保育、教育、研究等多功能的自然公園。<br>
+                關渡平原最好的賞鳥時機為秋冬兩季，有各種鷸鴴科、雁鴨科等冬候鳥，在秋季休息再南飛或定居渡冬。到了春季則陸續北返。</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><i class="fa-solid fa-map-location-dot "></i></i>　<b>台北市北投區關渡路55號</b></li>
+              <li class="list-group-item"><i class="fa-solid fa-earth-americas "></i>　<a rel="nofollow" class="" href="https://gd-park.org.tw/" title="左鍵進入連結">關渡自然公園_官網</a></li>
+            </ul>
+            <div class="card-footer">
+                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看路線圖</button>
+                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看天氣狀況</button>
+            </div>
+          </div>
+        </div>
 
+        <div class="col">
+          <div class="card h-100">
+            <img src="../../../static/images/n3.JPG" class="card-img-top" alt="華江雁鴨自然公園照片">
+            <span class="small text-secondary">(照片取自-純其)</span>
+
+            <div class="card-body">
+              <h5 class="card-title">華江雁鴨自然公園</h5>
+              <p class="card-text">華江雁鴨自然公園位於萬華區淡水河畔，佔地面積廣大，站在華江橋向下望，即可見大片綠野草坪，公園內設有籃球場、溜冰場、休憩涼亭等等休閒設施。<br>
+                華江橋下附近的沙洲濕地也一直是許多候鳥的棲息地，每年9月至次年4月，都會有數以千計的雁鴨科與鷸行鳥科等鳥類來造訪。
+              </p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><i class="fa-solid fa-map-location-dot "></i></i>　<b>台北市萬華區柳鄉里</b></li>
+              <li class="list-group-item"><i class="fa-solid fa-earth-americas "></i>　<a rel="nofollow" class="" href="https://www.travelking.com.tw/tourguide/scenery191.html" title="左鍵進入連結">華江雁鴨自然公園_TravelKing介紹 </a></li>
+            </ul>
+            <div class="card-footer">
+                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看路線圖</button>
+                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看天氣狀況</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100">
+            <img src="../../../static/images/n1.jpeg" class="card-img-top" alt="許厝港濕地照片">
+            <span class="small text-secondary">(照片取自-jerry1217922)</span>
+            <div class="card-body">
+              <h5 class="card-title">許厝港濕地</h5>
+              <p class="card-text">許厝港濕地位於桃園大園老街溪、雙溪口溪兩河匯流的海岸。<br>北台灣最大的海岸型濕地，由於河流水系發達，成為候鳥過境的重要場所。<br>
+                被國際鳥盟(BirdLife International)評為重要野鳥棲地的許厝港濕地，每年10月至隔年5月總是湧進了不少賞鳥人潮</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><i class="fa-solid fa-map-location-dot "></i></i>　<b>桃園市大園區老街溪河口右岸</b></li>
+              <li class="list-group-item"><i class="fa-solid fa-earth-americas "></i>　<a rel="nofollow" class="" href="https://travel.tycg.gov.tw/zh-tw/travel/attraction/961" title="左鍵進入連結">許厝港濕地_桃園觀光局</a></li>
+            </ul>
+            <div class="card-footer">
+                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看路線圖</button>
+                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看天氣狀況</button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="row" >
-      <div class="col-1"></div>
-      <p> 即刻賞鳥realtime 動態網站</p>
+
+    <!-- 中部地區 -->
+    <div class="container">
+      <div class="col-12 my-3 border-bottom ">
+        <h3><i class="fa-solid fa-compass" style="color: #e1b56a;"></i> 中部地區</h3>
+      </div>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card h-100">
+            <img src="../../../static/images/m1.jpg" class="card-img-top" alt="大雪山國家森林遊樂區照片">
+            <span class="small text-secondary">(照片取自-台中觀傳局)</span>
+            <div class="card-body">
+              <h5 class="card-title">大雪山國家森林遊樂區</h5>
+              <p class="card-text">大雪山國家森林遊樂區除了有許多林道與壯觀神木外，在大雪山林道23公里前後也有相當美麗的賞鳥點<br>
+                約在23.5K的山桐子賞鳥平台，即可能觀察到數十種的美麗飛羽，這裡可說是進入大雪山國家森林遊樂區前最負盛名的鳥類觀察及攝影地點。</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><i class="fa-solid fa-map-location-dot "></i></i>　<b>臺中市和平區雪山路18號</b></li>
+              <li class="list-group-item"><i class="fa-solid fa-earth-americas "></i>　
+                <a rel="nofollow" class="" href="https://recreation.forest.gov.tw/forest/ra?typ=0&typ_id=0300003" title="左鍵進入連結">大雪山_台灣山林悠遊網</a>
+              </li>
+              <li class="list-group-item"><i class="fa-solid fa-earth-americas "></i>　
+                <a rel="nofollow" class="" href="https://www.treatrip.com/limited/bird-watching-route/#google_vignette" title="左鍵進入連結">大雪山_TreaTrip賞鳥點介紹</a>
+              </li>
+
+            </ul>
+            <div class="card-footer">
+                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看路線圖</button>
+                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看天氣狀況</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- <div class="col">
+          <div class="card h-100">
+            <img src="../../../static/images/n2.jpg" class="card-img-top" alt="台江國家公園照片">
+            <div class="card-body">
+              <h5 class="card-title">關渡自然公園</h5>
+              <p class="card-text"></p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><i class="fa-solid fa-map-location-dot "></i></i>　<b>台北市北投區關渡路55號</b></li>
+              <li class="list-group-item"><i class="fa-solid fa-earth-americas "></i>　<a rel="nofollow" class="" href="https://gd-park.org.tw/" title="左鍵進入連結">關渡自然公園_官網ㄋ介紹</a></li>
+            </ul>
+            <div class="card-footer">
+                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看路線圖</button>
+                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看天氣狀況</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100">
+            <img src="../../../static/images/n3.JPG" class="card-img-top" alt="台江國家公園照片">
+            <div class="card-body">
+              <h5 class="card-title">華江雁鴨自然公園</h5>
+              <p class="card-text"></p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><i class="fa-solid fa-map-location-dot "></i></i>　<b>台北市萬華區柳鄉里</b></li>
+              <li class="list-group-item"><i class="fa-solid fa-earth-americas "></i>　<a rel="nofollow" class="" href="https://www.travelking.com.tw/tourguide/scenery191.html" title="左鍵進入連結">華江雁鴨自然公園_TravelKing介紹 </a></li>
+            </ul>
+            <div class="card-footer">
+                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看路線圖</button>
+                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看天氣狀況</button>
+            </div>
+          </div>
+        </div> -->
+      </div>
     </div>
 
-        {% for bird in birds %}
-        <p>{{bird.COMMONNAME}}</p>
-        {% endfor %}
+
+    <!-- 南部地區 -->
+    <div class="container">
+      <div class="col-12 my-3 border-bottom ">
+        <h3><i class="fa-solid fa-compass" style="color: #56c03c;"></i> 南部地區</h3>
+      </div>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card h-100">
+            <img src="../../../static/images/s2.jpg" class="card-img-top" alt="台江國家公園照片">
+            <span class="small text-secondary">(照片取自-洪邵歆)</span>
+            <div class="card-body">
+              <h5 class="card-title">台江國家公園</h5>
+              <p class="card-text">於2009年成立的台江國家公園，為臺灣首座都市型國家公園，位於本島西南沿海，其陸域縱貫臺南市沿海，跨越七股溪、曾文溪、鹿耳門溪、鹽水溪等四條溪流出海口。<br>
+                根據臺南市野鳥學會歷年所做調查，台江國家公園區域出現的鳥種近200種，其中保育類鳥類計有黑面琵鷺等21種</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><i class="fa-solid fa-map-location-dot "></i></i>　<b>台南市安南區四草大道118號</b></li>
+              <li class="list-group-item"><i class="fa-solid fa-earth-americas "></i>　<a rel="nofollow" class="" href="https://www.tjnp.gov.tw/" title="左鍵進入連結">台江國家公園_官網</a></li>
+            </ul>
+            <div class="card-footer">
+                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看路線圖</button>
+                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看天氣狀況</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100">
+            <img src="../../../static/images/s1.jpg" class="card-img-top" alt="成龍濕地照片">
+            <span class="small text-secondary">(照片取自-漫遊雲林)</span>
+            <div class="card-body">
+              <h5 class="card-title">成龍濕地</h5>
+              <p class="card-text">位於雲林縣口湖鄉成龍村、西部濱海快速公路的口湖交流道旁，是台灣雲嘉南濱海國家風景區內的一塊地方級濕地。<br>
+                每年都有成千上萬的候鳥飛來駐足棲息，包括有黑面琵鷺、彩鷸、短耳鴞等罕見的野鳥足跡。</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><i class="fa-solid fa-map-location-dot "></i></i>　<b>雲林縣口湖鄉成龍村</b></li>
+              <li class="list-group-item"><i class="fa-solid fa-earth-americas "></i>　<a rel="nofollow" class="" href="https://www.swcoast-nsa.gov.tw/zh-tw/attraction/details/92" title="左鍵進入連結">成龍濕地_雲嘉南濱海國家風景區</a></li>
+            </ul>
+            <div class="card-footer">
+                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看路線圖</button>
+                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看天氣狀況</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100">
+            <img src="../../../static/images/s3.jpg" class="card-img-top" alt="鰲鼓濕地照片">
+            <span class="small text-secondary">(照片取自-WEN CHIANG CHIOU)</span>
+
+            <div class="card-body">
+              <h5 class="card-title">鰲鼓濕地森林園區</h5>
+              <p class="card-text">
+                位於嘉義縣東石鄉鰲鼓村沿海的濕地，林務局於2010年結合濕地與平地造林區，成為現今之鰲鼓濕地森林園區。<br>
+                鰲鼓濕地是冬候鳥重要過冬區，冬候鳥數量之大、種類多元，目前記錄的保育鳥類有東方白鸛、黑鸛、黑面琵鷺、唐白鷺、雀鷹、赤腹鷹、灰面鷺、魚鷹、諾氏鷸、彩鷸、小燕鷗、紅尾伯勞等。
+              </p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><i class="fa-solid fa-map-location-dot "></i></i>　<b>嘉義縣東石鄉鰲鼓村四股54號</b></li>
+              <li class="list-group-item"><i class="fa-solid fa-earth-americas "></i>　<a rel="nofollow" class="" href="https://recreation.forest.gov.tw/Forest/FP?typ_id=05001" title="左鍵進入連結">鰲鼓濕地_台灣山林悠遊網</a></li>
+            </ul>
+            <div class="card-footer">
+                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看路線圖</button>
+                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看天氣狀況</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <!-- 東部地區 -->
+    <!-- <h3><i class="fa-solid fa-compass" style="color: #d97e2f;"></i> 東部地區</h3> -->
 
+      <iframe
+      src="https://maps.google.com.tw/maps?f=1&hl=zh-TW&geocode=&q=台江國家公園&z=15&output=embed&t="
+      width="100%"
+      height=450px"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
+
+    </div>
+
+
+
+    <footer>
+      <div class="container-fluid">
+        <div class="row" style="background-color:#E59C73;">
+            <div class="col text-center text-light small my-2">
+            <img
+          src="{% static 'images/logo.png' %}"
+          class="img-fluid mx-2 "
+          alt="logo"
+          title="候鳥logo"
+            />
+            <!-- 地址：242新北市新莊區中正路510<br>
+            電話：+ 886 2 2905 2000 <br>
+            Email：migratory_birds@mail.fju.edu.tw <br> -->
+
+            候鳥來了 © 2023 All Rights Reserved.
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+<!-- Optional JavaScript -->
+    <!-- jQuery first, then Bootstrap JS -->
+    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
   </body>
 </html>

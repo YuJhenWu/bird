@@ -1,43 +1,54 @@
-/* 雲動畫效果 */
-svg {
-  display: block;
-  width: 100%;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
-.scrollElement {
-  position: absolute;
-  height: 6000px;
-  width: 100px;
-  top: 0;
-  z-index: 0;
-}
-/*  */
-
 body {
-  background-image: url("../images/home_bg.png");
+  /* background-image: url("../images/home_bg.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover; */
+  /* background-attachment: fixed; */
+  font-family: "Noto Sans TC", sans-serif;
+  font-family: "Microsoft JhengHei";
+  background-color: rgb(255, 232, 201, 90%);
+}
+
+.banner {
+  background-image: url("../images/home_bg2.png");
+  height: 100vh;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
-  font-family: microsoft jhengHei;
+  /* background-attachment: fixed; */
 }
 
+/* 導覽列的顏色與效果 */
 nav {
-  background-color: rgba(0, 0, 0, 0.35);
+  background-color: rgba(248, 249, 250, 0.5);
   transition: all 0.5s;
 }
-
 nav:hover {
-  background-color: rgba(0, 0, 0, 1);
+  background-color: rgb(252, 250, 252);
 }
 
 nav h1 {
   animation: showTxt 2s;
 }
+
+.my-nav {
+  box-shadow: 2px 2px 5px rgba(93, 83, 72, 0.3);
+}
+
+a {
+  text-decoration: none;
+}
+
+/* logo字的動畫效果 */
+@keyframes showTxt {
+  from {
+    transform: scale(0.5, 0.5) rotate(10deg);
+  }
+  to {
+    transform: scale(1, 1) rotate(0deg);
+  }
+}
+
 .text-orange {
   color: #b55135;
 }
@@ -55,39 +66,140 @@ nav h1 {
   border: 3px solid #3d1101;
   background-color: #efe9e7;
 }
-.search-btn {
-  width: 40px;
-  height: 32px;
-  background-color: #3d1101;
-  color: #efe9e7;
-  outline: none;
-  border: 2px solid #3d1101;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  right: 0;
-}
-/* 天氣 */
-.temperature {
-  width: 200px;
-  height: 60px;
-  padding: 10px;
-  background-color: #c67759;
-  border-radius: 550px 500px 500px 500px;
-  box-shadow: 0px 4px 4px 0px rgba(85, 58, 58, 0.192);
-  color: white;
-  display: flex;
-  position: relative;
-  justify-content: center;
-  align-items: center;
+
+/* 控制輪播圖大小 */
+.Carousel-dox {
+  height: 380px;
+  width: 540px;
+  background: hsla(27, 83%, 77%, 0.604);
 }
 
-/*  */
-@keyframes showTxt {
-  from {
-    transform: scale(0.5, 0.5) rotate(10deg);
-  }
-  to {
-    transform: scale(1, 1) rotate(0deg);
-  }
+.tt {
+  font-size: 20px;
+  width: 30px;
+  height: 52px;
+}
+/* 測試用 */
+/* .scrollElement {
+  position: absolute;
+  height: 6000px;
+  width: 100px;
+  top: 0;
+  z-index: 0;
+} */
+
+/* 也是控制輪播圖大小 */
+/* .carousel .carousel-item {
+  height: 400px;
+  background-color: #777;
+} */
+/* .carousel-inner > .carousel-item .img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  height: 400px;
+} */
+
+/* 按鈕 */
+.hitsearch {
+  padding: 4px 12px;
+  font-size: 16px;
+  border-radius: 16px;
+  background-color: #9abf7f;
+}
+
+.weather-box {
+  width: 400px;
+  border: 2px solid #ccc;
+  background: #e0ecf5;
+  border-radius: 8px;
+}
+
+h1 b {
+  font-size: 60px;
+}
+
+/* 粗體字 */
+li a {
+  font-weight: bold;
+}
+
+.logo-style {
+  width: 38px;
+  height: 38px;
+  vertical-align: super;
+}
+
+/* 彈跳動畫效果 */
+.nav-item:hover {
+  -webkit-animation-name: fa-bounce;
+  animation-name: fa-bounce;
+  -webkit-animation-delay: var(--fa-animation-delay, 0s);
+  animation-delay: var(--fa-animation-delay, 0s);
+  -webkit-animation-direction: var(--fa-animation-direction, normal);
+  animation-direction: var(--fa-animation-direction, normal);
+  -webkit-animation-duration: var(--fa-animation-duration, 1s);
+  animation-duration: var(--fa-animation-duration, 1s);
+  -webkit-animation-iteration-count: var(
+    --fa-animation-iteration-count,
+    infinite
+  );
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  -webkit-animation-timing-function: var(
+    --fa-animation-timing,
+    cubic-bezier(0.28, 0.84, 0.42, 1)
+  );
+  animation-timing-function: var(
+    --fa-animation-timing,
+    cubic-bezier(0.28, 0.84, 0.42, 1)
+  );
+}
+
+/* logo的動畫效果 */
+.logo_size:hover {
+  -webkit-animation-name: fa-beat-fade;
+  animation-name: fa-beat-fade;
+  -webkit-animation-delay: var(--fa-animation-delay, 0s);
+  animation-delay: var(--fa-animation-delay, 0s);
+  -webkit-animation-direction: var(--fa-animation-direction, normal);
+  animation-direction: var(--fa-animation-direction, normal);
+  -webkit-animation-duration: var(--fa-animation-duration, 1s);
+  animation-duration: var(--fa-animation-duration, 1s);
+  -webkit-animation-iteration-count: var(
+    --fa-animation-iteration-count,
+    infinite
+  );
+  animation-iteration-count: var(--fa-animation-iteration-count, infinite);
+  -webkit-animation-timing-function: var(
+    --fa-animation-timing,
+    cubic-bezier(0.4, 0, 0.6, 1)
+  );
+  animation-timing-function: var(
+    --fa-animation-timing,
+    cubic-bezier(0.4, 0, 0.6, 1)
+  );
+}
+
+.Rectangle {
+  width: 400px;
+  height: 60px;
+  flex-shrink: 0;
+  border-radius: 61px;
+  border: 3px solid #c9b079;
+  background: #fff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  justify-content: center;
+  text-align: center;
+  line-height: 60px;
+}
+
+/* 圖片點擊效果 */
+.productImg {
+  filter: brightness(0.75) saturate(0.8);
+  transition: all 0.8s;
+}
+.productImg:hover {
+  cursor: pointer;
+  filter: brightness(1) saturate(1.5);
 }

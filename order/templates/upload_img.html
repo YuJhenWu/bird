@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Upload Image</title>
+</head>
+<body>
+<form action="." method="POST" enctype="multipart/form-data"name="upload_img_form">
+    {% csrf_token %}
+    <div class="mb-3">
+        鳥名<br>
+        <input type="text" name="name" class="form-control" >
+    <div class="updateImg">
+        <img src="{{ account.photo.url }}" alt=""/></div>
+    <input name="photo" type="file">
+    <button class="btn btn-danger" type="submit">上傳照片</button>
+</form>
+<div>
+    {% for item in Birds %}
+      <p>{{item.name}}</p>
+    <img src="/media/{{ item.photo }}" width =350 >
+    {% endfor %}
+</div>
+</body>
+</html>
