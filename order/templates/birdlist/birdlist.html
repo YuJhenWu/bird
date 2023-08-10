@@ -13,81 +13,93 @@
     <link rel="shortuct icon" href="../../../static/images/logo.png">
 
     <title>候鳥來了-候鳥圖鑑</title>
-    <!-- {% load static %} -->
-    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+
+    <!-- icon css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- <script src="https://code.jquery.com/jquery-3.7.0.min.js"></script> -->
+
+    <link rel="stylesheet" type="text/css" href="../../../static/css/main.css" />
   </head>
 
   <body>
     <!-- 導覽列 -->
-    <nav class="navbar navbar-expand-sm  navbar-light fixed-top my-nav">
+    <nav class="navbar navbar-expand-md  navbar-light fixed-top my-nav">
       <a href="http://127.0.0.1:8000/index_test/">
-      <img
-            src="{% static 'images/logo.png' %}"
-            class="img-fluid ms-4"
-            alt="logo"
-            title="候鳥logo"
+          <img
+            src="../../../static/images/logo.png"
+            class="img-fluid ms-4 logo-style"
+            alt="候鳥logo"
+            title="回首頁"
           />
       </a>
 
       <a href="http://127.0.0.1:8000/index_test/" class="nav-link">
-        <h1 class="navbar-brand" style="color:#B55135">
+        <h1 class="navbar-brand" style="color : #B55135;">
           <strong>候鳥來了</strong>
         </h1>
       </a>
       <!-- 漢堡選單 -->
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent"
+        aria-controls="navbarToggleExternalContent" aria-expanded="false"  aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <!-- 漢堡選單 Id -->
       <div class="navbar-collapse collapse justify-content-end" id="navbarToggleExternalContent">
-
         <ul class="navbar-nav">
           <li class="nav-item">
             <a href="http://127.0.0.1:8000/" class="nav-link text-success">回到測試頁面</a>
           </li>
 
           <li class="nav-item">
-            <a href="http://127.0.0.1:8000/index_test/" class="nav-link">首頁</a>
+            <a href="http://127.0.0.1:8000/index_test/" class="nav-link"><i class="fa fa-home"></i>首頁</a>
           </li>
 
           <li class="nav-item">
-            <a href="http://127.0.0.1:8000/realtime/" class="nav-link">即刻賞鳥</a>
+            <a href="http://127.0.0.1:8000/realtime/" class="nav-link"><i class="fa-solid fa-dove"></i>即刻賞鳥</a>
           </li>
 
           <li class="nav-item">
-            <a href="http://127.0.0.1:8000/birdlist/" class="nav-link text-danger">候鳥圖鑑</a>
-          </li>
-
-
-          <li class="nav-item">
-          <a href="http://127.0.0.1:8000/guide/" class="nav-link">賞鳥須知</a>
+            <a href="http://127.0.0.1:8000/birdlist/" class="nav-link text-danger"><i class="fa fa-book"></i>候鳥圖鑑</i></a>
           </li>
 
           <li class="nav-item">
-            <a href="http://127.0.0.1:8000/about/" class="nav-link ">關於我們</a>
+          <a href="http://127.0.0.1:8000/guide/" class="nav-link"><i class="fa fa-camera-retro"></i>賞鳥須知</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="http://127.0.0.1:8000/about/" class="nav-link "><i class="fa fa-address-book"></i></i>關於我們</a>
           </li>
         </ul>
       </div>
-
     </nav>
-
     <!-- my-3上下邊距各推 -->
+
     <div class="row my-3"></div>
-    <!-- 背景 banner -->
-    <div class="container-fluid banner">
 
       <!-- my-5 = 6rem的距離 -->
       <div class="row my-5"></div>
-
+      <div class="row my-5" style=" justify-content: center;">
+        <div class="Rectangle">
+          <span style="color: #A24F49; font-size: 36px;">
+          <img src="../../../static/images/bird-image.png"
+          class="img-fluid mb-2"
+          style="width: 50px;
+          height: 52px;"
+          alt="候鳥圖鑑icon"
+          />候鳥圖鑑</span>
+        </div>
+      </div>
       <!-- 熱門搜尋功能 -->
-      <script>
+      <!-- <script>
         function displayText(buttonText) {
             // 得到按鈕的文字内容
             document.getElementById('bird-comName').value = buttonText;
         }
-    </script>
+      </script> -->
     <!-- 搜尋列 -->
-      <div class="container">
+      <!-- <div class="container">
         <div class="row justify-content-center">
           <div class="col-auto">
               <label>
@@ -96,13 +108,12 @@
               <datalist id="comName">
                 <option value="黃頭鷺">
                 <option value="黑面琵鷺">
-                <option value="紅隼">
+                <option value="白腹鶇">
               </datalist>
               <input type="image"
-                src="{% static 'images/search_icon.svg' %}"
+                src="../../../static/images/search_icon.svg"
                 alt="search"
                 width="30" height="26">
-                <!-- <input type="reset" name="reset" value="reset" />s -->
           </div>
         </div>
         <div class="row">
@@ -112,22 +123,190 @@
             <button class="btn btn-success hitsearch me-md-1" onclick="displayText('黑面琵鷺')">黑面琵鷺</button>
             <button class="btn btn-success hitsearch me-md-1" onclick="displayText('黃頭鷺')">黃頭鷺</button>
             <button class="btn btn-success hitsearch" onclick="displayText('🏸')">週六羽球場</button>
+
           </div>
           <div class="col">
           </div>
         </div>
+      </div> -->
+      <!-- 圖鑑 -->
+      <!-- Button trigger modal -->
+      <div class="container-fluid">
+        <div class="row text-center my-5">
+          <div class="col-12 col-md-4 col-lg-2 offset-lg-3 my-3">
+            <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/304971031/1200" class="img-fluid productImg" alt="" title="看詳細介紹" data-bs-toggle="modal" data-bs-target="#bird1" style=" border-radius:50%;">
+            <h5 class="mt-1"><b>黃頭鷺</b></h5>
+          </div>
+          <div class="col-12 col-md-4 col-lg-2 my-3">
+            <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/85660691/1200" class="img-fluid productImg" alt="" title="看詳細介紹" data-bs-toggle="modal" data-bs-target="#bird2" style=" border-radius:50%;">
+            <h5 class="mt-1"><b>黑面琵鷺</b></h5>
+          </div>
+          <div class="col-12 col-md-4 col-lg-2 my-3">
+            <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/158861511/1200" class="img-fluid productImg" alt="" title="看詳細介紹" data-bs-toggle="modal" data-bs-target="#bird3" style=" border-radius:50%;">
+            <h5 class="mt-1"><b>白腹鶇</b></h5>
+          </div>
+        </div>
       </div>
-    </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="bird1" tabindex="-1" aria-labelledby="bird1" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="bird1"><b>黃頭鷺</b></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/304971031/1200" class="img-thumbnail" style="width: 500px;">
+                <table class="my-5">
+                  <tr>
+                    <td class="text-orange">鳥種名　　　　</td>
+                    <td>黃頭鷺</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">科別名</td>
+                    <td>鷺科</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">別名</td>
+                    <td>牛背鷺</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">起始月份</td>
+                    <td>3月</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">離開月份</td>
+                    <td>9月</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">到來季節</td>
+                    <td>夏</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">棲息地</td>
+                    <td>華江雁鴨自然公園,田寮洋賞鳥區</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">簡介</td>
+                    <td>小而結實的白色鷺，有粗壯的黃嘴。非繁殖期時羽色幾乎全身雪白、腳為黑褐色；繁殖期時，腳為紅色或黃色，頭部、頸部和背部出現黃色斑塊。常尾隨於牛群及農耕機四周或停棲於牛背上。</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+
+                <!-- Modal -->
+                <div class="modal fade" id="bird2" tabindex="-1" aria-labelledby="bird2" aria-hidden="true">
+                  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="bird1"><b>黑面琵鷺</b></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/85660691/1200" class="img-thumbnail" style="width: 500px;">
+                        <table class="my-5">
+                          <tr>
+                            <td class="text-orange">科別名</td>
+                            <td>鷺科</td>
+                          </tr>
+                          <tr>
+                            <td class="text-orange">別名</td>
+                            <td>牛背鷺</td>
+                          </tr>
+                          <tr>
+                            <td class="text-orange">起始月份</td>
+                            <td>3月</td>
+                          </tr>
+                          <tr>
+                            <td class="text-orange">離開月份</td>
+                            <td>9月</td>
+                          </tr>
+                          <tr>
+                            <td class="text-orange">到來季節</td>
+                            <td>夏</td>
+                          </tr>
+                          <tr>
+                            <td class="text-orange">棲息地</td>
+                            <td>華江雁鴨自然公園,田寮洋賞鳥區</td>
+                          </tr>
+                          <tr>
+                            <td class="text-orange">簡介</td>
+                            <td>小而結實的白色鷺，有粗壯的黃嘴。非繁殖期時羽色幾乎全身雪白、腳為黑褐色；繁殖期時，腳為紅色或黃色，頭部、頸部和背部出現黃色斑塊。常尾隨於牛群及農耕機四周或停棲於牛背上。</td>
+                          </tr>
+                        </table>
+                      </div>
+                      <div class="modal-footer">
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                        <!-- Modal -->
+        <div class="modal fade" id="bird3" tabindex="-1" aria-labelledby="bird3" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="bird1"><b>白腹鶇</b></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/158861511/1200" class="img-thumbnail" style="width: 500px;">
+                <table class="my-5">
+                  <tr>
+                    <td class="text-orange">鳥種名　　　　</td>
+                    <td>白腹鶇</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">科別名</td>
+                    <td>鷺科</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">別名</td>
+                    <td>牛背鷺</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">起始月份</td>
+                    <td>3月</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">離開月份</td>
+                    <td>9月</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">到來季節</td>
+                    <td>夏</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">棲息地</td>
+                    <td>華江雁鴨自然公園,田寮洋賞鳥區</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">簡介</td>
+                    <td>小而結實的白色鷺，有粗壯的黃嘴。非繁殖期時羽色幾乎全身雪白、腳為黑褐色；繁殖期時，腳為紅色或黃色，頭部、頸部和背部出現黃色斑塊。常尾隨於牛群及農耕機四周或停棲於牛背上。</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+
+
 
     <footer>
       <div class="container-fluid">
         <div class="row" style="background-color:#E59C73;">
             <div class="col text-center text-light small my-2">
             <img
-          src="{% static 'images/logo.png' %}"
+          src="../../../static/images/logo.png"
           class="img-fluid mx-2 "
           alt="logo"
-          title="候鳥logo"
             />
             <!-- 地址：242新北市新莊區中正路510<br>
             電話：+ 886 2 2905 2000 <br>
