@@ -113,7 +113,8 @@
           </div>
         </div>
       </div>
-
+      <div class="Rectangle">
+      </div>
       <!-- 天氣區塊 -->
       <div class="container-fluid">
         <div valign="top" class="col-12 col-sm-8 offset-sm-2 my-3 border-bottom ">
@@ -309,10 +310,10 @@
               };
               console.log(pos)
               posJson = JSON.stringify(
-                { lat: pos.lat, 
+                { lat: pos.lat,
                   lng: pos.lng});
               $.ajax({
-                url: "/getMyloc/",    
+                url: "/getMyloc/",
                 data: posJson,
                 dataType: "json",
                 headers: { "X-CSRFToken": "{{ csrf_token }}" },
@@ -329,7 +330,7 @@
                     document.getElementById("max_tem").innerHTML = response.weather_msg.max_tem+'°C'
                     document.getElementById("min_tem").innerHTML = response.weather_msg.min_tem+'°C'
                   }
-                  
+
                 },
                 error: function (response) {
                   if(response.message === 'success')
@@ -352,12 +353,12 @@
         else
           window.alert( "Error: 您的瀏覽器不支持定位功能，請換成其他瀏覽器。");
       }
-      
+
     </script>
-    
+
     <div id="map"></div>
     <script src="https://maps.googleapis.com/maps/api/js?key={{key}}&callback=initMap"async="" defer=""></script>
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script> 
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
 
 
 
