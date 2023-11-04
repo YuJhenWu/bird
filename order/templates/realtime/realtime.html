@@ -25,7 +25,7 @@
   <body>
   <!-- 導覽列 -->
   <nav class="navbar navbar-expand-md  navbar-light fixed-top my-nav">
-    <a href="http://127.0.0.1:8000/index_test/">
+    <a href="http://127.0.0.1:8000/">
     <!-- <img
           src="{% static 'images/logo.png' %}"
           class="img-fluid ms-4"
@@ -41,7 +41,7 @@
         />
     </a>
 
-    <a href="http://127.0.0.1:8000/index_test/" class="nav-link">
+    <a href="http://127.0.0.1:8000/" class="nav-link">
       <h1 class="navbar-brand" style="color : #B55135;">
         <strong>候鳥來了</strong>
       </h1>
@@ -54,12 +54,9 @@
     <!-- 漢堡選單 Id -->
     <div class="navbar-collapse collapse justify-content-end" id="navbarToggleExternalContent">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a href="http://127.0.0.1:8000/" class="nav-link text-success">回到測試頁面</a>
-        </li>
 
         <li class="nav-item">
-          <a href="http://127.0.0.1:8000/index_test/" class="nav-link"><i class="fa fa-home"></i>首頁</a>
+          <a href="http://127.0.0.1:8000/" class="nav-link"><i class="fa fa-home"></i>首頁</a>
         </li>
 
         <li class="nav-item">
@@ -92,7 +89,7 @@
     </style> -->
 
 
-  <script>
+    <script>
         let storedVariable;
         const displayVariable = document.getElementById("displayVariable");
         // 存變數
@@ -100,15 +97,22 @@
             storedVariable = value;
             displayVariable.textContent = storedVariable;
         }
+
+        function changeMap(src) {
+        var iframe = document.getElementById('map');
+        iframe.src = src;
+      }
     </script>
 
       <!--  -->
       <div class="row my-5"></div>
-      <div class="row my-5" style=" justify-content: center;">
-        <div class="Rectangle">
-          <i class="fa-solid fa-dove text-orange" style=" font-size: 36px;"></i>
-          <span style="color: #A24F49; font-size: 36px;">
-          即刻賞鳥</span>
+      <div class="container">
+        <div class="row my-5" style=" justify-content: center;">
+          <div class="Rectangle">
+            <i class="fa-solid fa-dove text-orange" style=" font-size: 26px;"></i>
+            <span class="Rectangle-title">
+            即刻賞鳥</span>
+          </div>
         </div>
       </div>
 
@@ -135,8 +139,9 @@
               <li class="list-group-item"><i class="fa-solid fa-earth-americas "></i>　<a rel="nofollow" class="" href="https://gd-park.org.tw/" title="左鍵進入連結">關渡自然公園_官網</a></li>
             </ul>
             <div class="card-footer">
-                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看路線圖</button>
-                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看天氣狀況</button>
+              <a href="#mapArea">
+                <button class="btn btn-secondary btn-sm" onclick="changeMap('https://maps.google.com.tw/maps?f=1&hl=zh-TW&geocode=&q=關渡自然公園&z=15&output=embed&t=')">查看地圖</button></a>
+
             </div>
           </div>
         </div>
@@ -157,8 +162,9 @@
               <li class="list-group-item"><i class="fa-solid fa-earth-americas "></i>　<a rel="nofollow" class="" href="https://www.travelking.com.tw/tourguide/scenery191.html" title="左鍵進入連結">華江雁鴨自然公園_TravelKing介紹 </a></li>
             </ul>
             <div class="card-footer">
-                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看路線圖</button>
-                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看天氣狀況</button>
+              <a href="#mapArea">
+                <button class="btn btn-secondary btn-sm" onclick="changeMap('https://maps.google.com.tw/maps?f=1&hl=zh-TW&geocode=&q=華江雁鴨自然公園&z=15&output=embed&t=')">查看地圖</button></a>
+
             </div>
           </div>
         </div>
@@ -177,8 +183,9 @@
               <li class="list-group-item"><i class="fa-solid fa-earth-americas "></i>　<a rel="nofollow" class="" href="https://travel.tycg.gov.tw/zh-tw/travel/attraction/961" title="左鍵進入連結">許厝港濕地_桃園觀光局</a></li>
             </ul>
             <div class="card-footer">
-                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看路線圖</button>
-                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看天氣狀況</button>
+              <a href="#mapArea">
+                <button class="btn btn-secondary btn-sm" onclick="changeMap('https://maps.google.com.tw/maps?f=1&hl=zh-TW&geocode=&q=許厝港濕地&z=15&output=embed&t=')">查看地圖</button></a>
+
             </div>
           </div>
         </div>
@@ -194,7 +201,7 @@
         <div class="col">
           <div class="card h-100">
             <img src="../../../static/images/m1.jpg" class="card-img-top" alt="大雪山國家森林遊樂區照片">
-            <span class="small text-secondary">(照片取自-台中觀傳局)</span>
+            <span class="small text-secondary">(照片取自-台中觀光傳播局)</span>
             <div class="card-body">
               <h5 class="card-title">大雪山國家森林遊樂區</h5>
               <p class="card-text">大雪山國家森林遊樂區除了有許多林道與壯觀神木外，在大雪山林道23公里前後也有相當美麗的賞鳥點<br>
@@ -211,49 +218,66 @@
 
             </ul>
             <div class="card-footer">
-                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看路線圖</button>
-                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看天氣狀況</button>
-            </div>
-          </div>
-        </div>
+              <a href="#mapArea">
+                <button class="btn btn-secondary btn-sm" onclick="changeMap('https://maps.google.com.tw/maps?f=1&hl=zh-TW&geocode=&q=大雪山遊客中心&z=15&output=embed&t=')">查看地圖</button></a>
 
-        <!-- <div class="col">
-          <div class="card h-100">
-            <img src="../../../static/images/n2.jpg" class="card-img-top" alt="台江國家公園照片">
-            <div class="card-body">
-              <h5 class="card-title">關渡自然公園</h5>
-              <p class="card-text"></p>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="list-group-item"><i class="fa-solid fa-map-location-dot "></i></i>　<b>台北市北投區關渡路55號</b></li>
-              <li class="list-group-item"><i class="fa-solid fa-earth-americas "></i>　<a rel="nofollow" class="" href="https://gd-park.org.tw/" title="左鍵進入連結">關渡自然公園_官網ㄋ介紹</a></li>
-            </ul>
-            <div class="card-footer">
-                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看路線圖</button>
-                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看天氣狀況</button>
             </div>
           </div>
         </div>
 
         <div class="col">
           <div class="card h-100">
-            <img src="../../../static/images/n3.JPG" class="card-img-top" alt="台江國家公園照片">
+            <img src="../../../static/images/m2.jpg" class="card-img-top" alt="高美濕地賞鳥景觀臺照片">
+            <span class="small text-secondary">(照片取自-台中觀光旅遊局)</span>
             <div class="card-body">
-              <h5 class="card-title">華江雁鴨自然公園</h5>
-              <p class="card-text"></p>
+              <h5 class="card-title">高美濕地賞鳥景觀臺</h5>
+              <p class="card-text">高美濕地位於清水大甲溪出海口南側，擁有豐富的天然資源，是國內少數幾處雁鴨集體繁殖區之一<br>
+                高美濕地雖然面積不大，但是由於泥質及沙質灘地兼具，加上與河口沼澤地帶鑲嵌在一起，所以孕育了豐富又複雜的濕地生態<br>
+                每年秋冬之際，都會有大批的候鳥前往作客</p>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item"><i class="fa-solid fa-map-location-dot "></i></i>　<b>台北市萬華區柳鄉里</b></li>
-              <li class="list-group-item"><i class="fa-solid fa-earth-americas "></i>　<a rel="nofollow" class="" href="https://www.travelking.com.tw/tourguide/scenery191.html" title="左鍵進入連結">華江雁鴨自然公園_TravelKing介紹 </a></li>
+              <li class="list-group-item"><i class="fa-solid fa-map-location-dot "></i></i>　<b>臺中市清水區大甲溪出海口</b></li>
+              <li class="list-group-item"><i class="fa-solid fa-earth-americas "></i>　
+                <a rel="nofollow" class="" href="https://hocom.tw/h/index?key=69442570" title="左鍵進入連結">高美濕地旅客服務中心</a>
+              </li>
+
             </ul>
             <div class="card-footer">
-                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看路線圖</button>
-                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看天氣狀況</button>
+              <a href="#mapArea">
+                <button class="btn btn-secondary btn-sm" onclick="changeMap('https://maps.google.com.tw/maps?f=1&hl=zh-TW&geocode=&q=大雪山遊客中心&z=15&output=embed&t=')">查看地圖</button></a>
+
             </div>
           </div>
-        </div> -->
+        </div>
+
+        <div class="col">
+          <div class="card h-100">
+            <img src="../../../static/images/m3.jpg" class="card-img-top" alt="大肚溪口賞鳥景觀臺照片">
+            <span class="small text-secondary">(照片取自-維基百科)</span>
+            <div class="card-body">
+              <h5 class="card-title">大肚溪口賞鳥景觀臺</h5>
+              <p class="card-text">大肚溪口位於臺中市與彰化縣交界，是臺灣中部地區最大的水鳥棲息地<br>
+                蘊涵豐富底棲生物的兩岸河堤沙洲，是水鳥喜愛遊憩覓食的場所<br>
+                每年10月到翌年5月是大肚溪口主要的賞鳥季節，其中12月至4月是欣賞鷸科鳥類的旺季，4月到7月則是燕鷗活躍的季節，此外到該區賞鳥最好配合潮汐。
+              </p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><i class="fa-solid fa-map-location-dot "></i></i>　<b>台中市龍井區三港路</b></li>
+              <li class="list-group-item"><i class="fa-solid fa-earth-americas "></i>　
+                <a rel="nofollow" class="" href="https://www.taiwan.net.tw/m1.aspx?sNo=0001112&id=A12-00007" title="左鍵進入連結">大肚溪口_Taiwan觀光資訊網</a>
+              </li>
+
+            </ul>
+            <div class="card-footer">
+              <a href="#mapArea">
+                <button class="btn btn-secondary btn-sm" onclick="changeMap('https://maps.google.com.tw/maps?f=1&hl=zh-TW&geocode=&q=大肚溪口賞鳥&z=15&output=embed&t=')">查看地圖</button></a>
+
+            </div>
+          </div>
+        </div>
       </div>
     </div>
+
 
 
     <!-- 南部地區 -->
@@ -276,8 +300,9 @@
               <li class="list-group-item"><i class="fa-solid fa-earth-americas "></i>　<a rel="nofollow" class="" href="https://www.tjnp.gov.tw/" title="左鍵進入連結">台江國家公園_官網</a></li>
             </ul>
             <div class="card-footer">
-                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看路線圖</button>
-                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看天氣狀況</button>
+              <a href="#mapArea">
+                <button class="btn btn-secondary btn-sm" onclick="changeMap('https://maps.google.com.tw/maps?f=1&hl=zh-TW&geocode=&q=台江國家公園&z=15&output=embed&t=')">查看地圖</button></a>
+
             </div>
           </div>
         </div>
@@ -296,8 +321,9 @@
               <li class="list-group-item"><i class="fa-solid fa-earth-americas "></i>　<a rel="nofollow" class="" href="https://www.swcoast-nsa.gov.tw/zh-tw/attraction/details/92" title="左鍵進入連結">成龍濕地_雲嘉南濱海國家風景區</a></li>
             </ul>
             <div class="card-footer">
-                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看路線圖</button>
-                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看天氣狀況</button>
+              <a href="#mapArea">
+                <button class="btn btn-secondary btn-sm" onclick="changeMap('https://maps.google.com.tw/maps?f=1&hl=zh-TW&geocode=&q=成龍濕地&z=15&output=embed&t=')">查看地圖</button></a>
+
             </div>
           </div>
         </div>
@@ -319,28 +345,104 @@
               <li class="list-group-item"><i class="fa-solid fa-earth-americas "></i>　<a rel="nofollow" class="" href="https://recreation.forest.gov.tw/Forest/FP?typ_id=05001" title="左鍵進入連結">鰲鼓濕地_台灣山林悠遊網</a></li>
             </ul>
             <div class="card-footer">
-                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看路線圖</button>
-                <button class="btn btn-secondary btn-sm" onclick="storeVariable('')">查看天氣狀況</button>
+              <a href="#mapArea">
+                <button class="btn btn-secondary btn-sm" onclick="changeMap('https://maps.google.com.tw/maps?f=1&hl=zh-TW&geocode=&q=鷹揚鰲鼓 - 鰲鼓濕地森林園區入口意象&z=15&output=embed&t=')">查看地圖</button></a>
+
             </div>
           </div>
         </div>
       </div>
     </div>
 
-
     <!-- 東部地區 -->
-    <!-- <h3><i class="fa-solid fa-compass" style="color: #d97e2f;"></i> 東部地區</h3> -->
+    <div class="container">
+      <div class="col-12 my-3 border-bottom ">
+        <h3><i class="fa-solid fa-compass" style="color: #d97e2f;"></i> 東部地區</h3>
+      </div>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <div class="col">
+          <div class="card h-100">
+            <img src="../../../static/images/e1.jpg" class="card-img-top" alt="五十二甲濕地照片">
+            <span class="small text-secondary">(照片取自-Max Chiang)</span>
+            <div class="card-body">
+              <h5 class="card-title">五十二甲濕地</h5>
+              <p class="card-text">五十二甲濕地位於宜蘭縣五結鄉，相傳該處昔日開墾面積有52甲而得名，是國家重要濕地。<br>
+                賞鳥時機為每年十月到十二月及春天四月，除了冬候鳥外，常可見綠頭鴨、琵嘴鴨、蒼鷺等鳥類在此展翅、落地的身影。五十二甲賞鳥區歷年共紀錄了百種以上鳥類，而特殊的鳥種也不少，如灰雁、白額雁、羅文鴨、磯雁、角鵬鵬、黑頸鵬鵬等，是賞鳥迷們不可錯過的聖地之一！</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><i class="fa-solid fa-map-location-dot "></i></i>　<b>宜蘭縣五結鄉利澤西路24-53號</b></li>
+              <li class="list-group-item"><i class="fa-solid fa-earth-americas "></i>　<a rel="nofollow" class="" href="https://www.necoast-nsa.gov.tw/Attraction-Content.aspx?a=294&l=1" title="左鍵進入連結">五十二甲濕地_觀光資訊網</a></li>
+            </ul>
+            <div class="card-footer">
+              <a href="#mapArea">
+                <button class="btn btn-secondary btn-sm" onclick="changeMap('https://maps.google.com.tw/maps?f=1&hl=zh-TW&geocode=&q=五十二甲濕地&z=15&output=embed&t=')">查看地圖</button></a>
 
-      <iframe
-      src="https://maps.google.com.tw/maps?f=1&hl=zh-TW&geocode=&q=台江國家公園&z=15&output=embed&t="
-      width="100%"
-      height=450px"
-      referrerpolicy="no-referrer-when-downgrade"
-    ></iframe>
+            </div>
+          </div>
+        </div>
 
+        <div class="col">
+          <div class="card h-100">
+            <img src="../../../static/images/e2.jpg" class="card-img-top" alt="美崙山公園照片">
+            <span class="small text-secondary">(照片取自-花蓮旅遊網)</span>
+            <div class="card-body">
+              <h5 class="card-title">美崙山公園</h5>
+              <p class="card-text">位於花蓮縣花蓮市，是花蓮市一處重要的地標。<br>
+                美崙山屬亞熱帶森林生態系，雨量充沛、氣候溫暖，且低密度開發，故仍保有翠綠的林木，動植物在此生生不息。頂著龐克頭的烏頭翁，全世界只有花蓮、台東及墾丁才能看到，美崙山卻隨處可見，不論晴雨，牠們總愛在美崙山步道旁出沒。天氣好時，美崙山也能遇見大冠鷲、鳳頭蒼鷹等猛禽盤旋天際，冬季更有國慶鳥灰面鵟鷹度冬。</p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><i class="fa-solid fa-map-location-dot "></i></i>　<b>花蓮縣花蓮市尚志路25-2號</b></li>
+              <li class="list-group-item"><i class="fa-solid fa-earth-americas "></i>　<a rel="nofollow" class="" href="https://culture-tourism.hualien.gov.tw/attraction_dt.php?id=13" title="左鍵進入連結">美崙山公園_花蓮市文化觀光資訊網</a></li>
+            </ul>
+            <div class="card-footer">
+              <a href="#mapArea">
+                <button class="btn btn-secondary btn-sm" onclick="changeMap('https://maps.google.com.tw/maps?f=1&hl=zh-TW&geocode=&q=美崙山公園&z=15&output=embed&t=')">查看地圖</button></a>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="col">
+          <div class="card h-100">
+            <img src="../../../static/images/e3.jfif" class="card-img-top" alt="太平溪人工濕地照片">
+            <span class="small text-secondary">(照片取自-臺東網路農場)</span>
+
+            <div class="card-body">
+              <h5 class="card-title">太平溪人工濕地</h5>
+              <p class="card-text">
+                太平溪人工濕地位於太平溪流域豐里橋至康樂橋間。<br>
+                除了具有淨化水質的功能外，用來改善水質的氧化池周邊還設有步道及說明站牌，提供了民眾閒暇時間休憩遊玩的場所，加上氧化池中的水擁有高優養化的物質，也成為野鳥駐足的地方，是一個兼具環保、教育價值及遊憩功能的人工濕地。
+              </p>
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><i class="fa-solid fa-map-location-dot "></i></i>　<b>台東縣台東市東海里</b></li>
+              <li class="list-group-item"><i class="fa-solid fa-earth-americas "></i>　<a rel="nofollow" class="" href="https://efarmer.taitung.gov.tw/zh-tw/Tourism/Attraction/283/" title="左鍵進入連結">太平溪人工濕地_臺東網路農場</a></li>
+            </ul>
+            <div class="card-footer">
+              <a href="#mapArea">
+                <button class="btn btn-secondary btn-sm" onclick="changeMap('https://maps.google.com.tw/maps?f=1&hl=zh-TW&geocode=&q=太平溪人工濕地&z=15&output=embed&t=')">查看地圖</button></a>
+
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
+    <script>
+      function changeMap(src) {
+        var iframe = document.getElementById('map');
+        iframe.src = src;
+      }
+    </script>
 
+    <div id="mapArea"></div>
+      <iframe
+      id="map"
+      src="https://maps.google.com.tw/maps?f=1&hl=zh-TW&geocode=&q=台江國家公園&z=15&output=embed&t="
+      width="100%"
+      height="450px"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
 
     <footer>
       <div class="container-fluid">

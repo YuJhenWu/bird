@@ -1,107 +1,325 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>鳥博士</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+    <link rel="shortuct icon" href="../../static/images/logo.png">
+
+    <title>候鳥來了 首頁</title>
+    {% load static %}
+
+      <!-- icon css -->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+      <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
   </head>
-  <body>
-    <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid">
-          <a class="navbar-brand container"  href="#">
-            <h2>鳥類總庫資料</h2>
-            <a scope="col" href="http://pw-design.tw:8000/order/" title="入庫輸入">鳥類入庫</a>
-          </a>
+
+  <body onload="current_time()">
+    <script>
+      var Today=new Date();
+      function current_time(){
+      NowDate=new Date();
+      y=Today.getFullYear();
+      Mon=Today.getMonth()+1;
+      day=Today.getDate();
+
+      h=NowDate.getHours();
+      m=NowDate.getMinutes();
+      document.getElementById('current').innerHTML = y+ "年" + Mon + "月" + day + "日 "+h+':'+m+'';
+      setTimeout('current_time()',60000);
+      }
+    document.write();
+      </script>
+
+    <!-- 導覽列 -->
+    <nav class="navbar navbar-expand-md  navbar-light fixed-top my-nav">
+      <a href="http://127.0.0.1:8000/">
+          <img
+            src="../../static/images/logo.png"
+            class="img-fluid ms-4 logo_size"
+            alt="候鳥logo"
+            title="回首頁"
+            style="font-size:0;"
+          />
+      </a>
+
+      <a href="http://127.0.0.1:8000/" class="nav-link">
+        <h1 class="navbar-brand" style="color : #B55135;">
+          <strong>候鳥來了</strong>
+        </h1>
+      </a>
+      <!-- 漢堡選單 -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent"
+        aria-controls="navbarToggleExternalContent" aria-expanded="false"  aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- 漢堡選單 Id -->
+      <div class="navbar-collapse collapse justify-content-end" id="navbarToggleExternalContent">
+        <ul class="navbar-nav">
+
+          <li class="nav-item">
+            <a href="http://127.0.0.1:8000/" class="nav-link text-danger"><i class="fa fa-home"></i>首頁</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="http://127.0.0.1:8000/realtime/" class="nav-link"><i class="fa-solid fa-dove"></i>即刻賞鳥</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="http://127.0.0.1:8000/birdlist/" class="nav-link"><i class="fa fa-book"></i>候鳥圖鑑</i></a>
+          </li>
+
+          <li class="nav-item">
+          <a href="http://127.0.0.1:8000/guide/" class="nav-link"><i class="fa fa-camera-retro"></i>賞鳥須知</a>
+          </li>
+
+          <li class="nav-item">
+            <a href="http://127.0.0.1:8000/about/" class="nav-link "><i class="fa fa-address-book"></i></i>關於我們</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- 首頁介紹 -->
+    <div class="row my-2"></div>
+    <div class="container-fluid banner">
+        <!-- my-5上下邊距各推 3rem(48px)的距離 -->
+        <div class="row my-5"></div>
+        <div class="row my-3"></div>
+        <div class="container">
+          <div class="row">
+            <div class="col-1"></div>
+            <div class="col-auto">
+              <h1>
+                <b>發現<span class="text-orange">候鳥</span>的<span class="text-orange">美麗</span>
+                  <br>感受<span class="text-orange">大自然的魅力</span>
+                </b>
+              </h1>
+            </div>
+          </div>
         </div>
-      </nav>
-      <table class="table table-striped">
-        <tr>
-          <th scope="col">序號</th>
-          <!--鳥名稱相關-->
-          <th scope="col">鳥種名</th>
-          <th scope="col">科別名</th>
-          <th scope="col">學名</th>
-          <th scope="col">英文名</th>
-          <th scope="col">別名</th>
-          <!--鳥等級-->
-          <th scope="col">保育等級</th>
-          <!--鳥時間相關-->
-          <th scope="col">起始月份</th>
-          <th scope="col">離開月份</th>
-          <th scope="col">季節</th>
-          <!--鳥棲息地-->
-          <th scope="col">棲息地</th>
-          <!--鳥描述-->
-          <th scope="col">介紹鳥兒</th>
-          <!--鳥圖片相關-->
-          <th scope="col">鳥兒圖片</th>
-          <th scope="col">圖片來源</th>
 
-          <!--編輯-->
-          <th scope="col">編輯</th>
-        </tr>
-        {% for item in items %}
-        <tr>
-          <!--鳥名稱相關-->
-          <td>{{item.id}}</td>
-          <td>{{item.name}}</td>
-          <td>{{item.familyName}}</td>
-          <td>{{item.englishName}}</td>
-          <td>{{item.nickName}}</td>
-          <!--鳥等級-->
-          <td>{{item.level}}</td>
-          <!--鳥時間相關-->
-          <td>{{item.startMonth}}</td>
-          <td>{{item.endMonth}}</td>
-          <td>{{item.season}}</td>
-          <!--鳥棲息地-->
-          <td>{{item.habitat}}</td>
-          <!--鳥描述-->
-          <td>{{item.description}}</td>
-          <!--鳥圖片相關-->
-          <td>{{item.image}}</td>
-          <td>{{item.photoby}}</td>
-        <td>
-          <a scope="col" href="" title="刪除">刪除</a>
-          <a scope="col" href="" title="修改">修改</a>
-          <a scope="col" href="" title="標籤">標籤</a>
-        </td>
-        </tr>
-        {% endfor %}
-      </table>
+        <div class="container">
+          <div class="row" >
+            <div class="col-1"></div>
+            <div class="col-auto">
+              <p>
+                探索候鳥世界，深入了解不同種類的候鳥，以及牠們生活的環境與習性。<br />「候鳥來了」為你提供各個季節觀察候鳥的最佳地點與時間，<br />
+                幫助您更順利地進行候鳥觀察活動。
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
 
+      <!-- 天氣區塊 -->
       <div class="container-fluid">
-
-        <p>
-          測試TEST<a scope="col" href="http://127.0.0.1:8000/test/" title="test">test</a>
-        </p>
-
-        <p>測試路徑用
-          <a scope="col" href="http://127.0.0.1:8000/index_test/" title="index_test" >-暫定首頁畫面-</a>
-          <a scope="col" href="http://127.0.0.1:8000/birdinfo/0/" title="birdinfo">birdinfo</a>
-          <p>guide相關👉
-            <a scope="col" href="http://127.0.0.1:8000/basicKnowledge/" title="basicKnowledge">basicKnowledge</a>
-            <a scope="col" href="http://127.0.0.1:8000/development/" title="development">development</a>
-            <a scope="col" href="http://127.0.0.1:8000/equipment/" title="equipment">equipment</a>
-            <a scope="col" href="http://127.0.0.1:8000/ethics/" title="ethics">ethics</a>
-          </p>
-          <p>realtime相關👉
-            <a scope="col" href="http://127.0.0.1:8000/info/" title="info">info</a>
-            <a scope="col" href="http://127.0.0.1:8000/place/" title="place">place</a>
-            <a scope="col" href="http://127.0.0.1:8000/recommend/" title="recommend">recommend</a>
-          </p>
-        </p>
-
-        <div>
-          {{weather_msg.location}}
-          {{weather_msg.weather_state}}
-          {{weather_msg.rain_prob}}%
-          {{weather_msg.comfort}}
-          {{weather_msg.max_tem}}°C
-          {{weather_msg.min_tem}}°C
+        <div valign="top" class="col-12 col-sm-8 offset-sm-2 my-3 border-bottom ">
+          <h3><i class="fa fa-cloud-sun"></i> 氣象資訊 <i class="fa fa-umbrella"></i></h3>
         </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+        <div class="container-fluid">
+          <div class="offset-sm-2 weather-box">
+            <div class="">
+              <ul class="square" style="list-style-type: none;">
+                <li class="mb-3 mt-1">
+                  <h4 id = "">{{weather_msg.location}}</h4>
+                </li>
+                  <li class="mb-3 mt-1">
+                    <span id="current"></span>
+                </li>
+                <li id = "weather_state">{{weather_msg.weather_state}}</li>
+                <!-- weather-item 為js傳回的對應天氣圖 -->
+                <li class="weather-item" style="height: 100px; width: 100px;">
+                </li>
+                <li class="mb-3">
+                  <h1><i class="fa-solid fa-temperature-three-quarters"></i><span style="Font-size:24px;">　{{weather_msg.min_tem}}°C - {{weather_msg.max_tem}}°C</span></h1>
+                </li>
+                <li class="mb-4">
+                  <h4><i class="fa fa-cloud-showers-heavy"><span style="font-family: '標楷體';" id = "rain_prob">　{{weather_msg.rain_prob}}%</span></i></h4>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 天氣圖示判斷js -->
+      <script>
+        function setWeatherImage(weather, imgElement) {
+          switch (weather) {
+            case '晴天':
+              imgElement.src = '../../static/images/weather icon/Sun_day.svg';
+              break;
+            default:
+              // else
+              if (weather.includes('雷'||'雨')) {
+                imgElement.src = '../../static/images/weather icon/rainy+thunder_day.svg';
+              }else if(weather.includes('雨'||'晴')){
+                imgElement.src = '../../static/images/weather icon/rainy+sun_day.svg';
+              }else if(weather.includes('晴'||'霧')){
+                imgElement.src = '../../static/images/weather icon/Sun+fog_day.svg';
+              }else if(weather.includes('雷')){
+                imgElement.src = '../../static/images/weather icon/thunder_day.svg';
+              }else if(weather.includes('雨')){
+                imgElement.src = '../../static/images/weather icon/rainy_day.svg';
+              }else if(weather.includes('多雲')){
+                imgElement.src = '../../static/images/weather icon/cloudy_day.svg';
+              }else{
+                imgElement.src = '../../static/images/weather icon/cloudy_day.svg';
+              }
+          }
+        }
+      const weatherState = '{{weather_msg.weather_state}}';
+
+      // 取得對應天氣的元素
+      const weatherItem = document.querySelector('.weather-item');
+
+      // 創建圖片元素
+      const imgElement = document.createElement('img');
+      //新增class元素 (img-fluid圖自動縮放 ms-5左推)
+      imgElement.classList.add('img-fluid', 'ms-5');
+      imgElement.alt = weatherState;
+      imgElement.title = weatherState;
+
+      //圖片元素插入到天氣元素中
+      weatherItem.appendChild(imgElement);
+
+      // 呼叫函式以設定天氣圖片
+      setWeatherImage(weatherState, imgElement);
+    </script>
+
+      <!-- 輪播 -->
+      <div class="container-fluid mt-3">
+        <div class="row">
+          <div class="col-12 col-sm-8 offset-sm-2 my-3 border-bottom">
+            <h3><i class="fa fa-globe"></i> 候鳥好站</h3>
+          </div>
+          <div class="col-6 offset-sm-2  Carousel-dox">
+            <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+
+              <div class="carousel-inner">
+                <!-- <h5>　</h5> -->
+                <div class="carousel-item active">
+                  <a href="https://www.bird.org.tw/news">
+                    <img src="../../static/images/h1.png" class="d-block w-100" alt="...">
+                    <div class="carousel-caption d-none d-md-block">
+                      <h5>點圖會跑到野鳥協會</h5>
+                    </div>
+                  </a>
+                </div>
+                <div class="carousel-item">
+                  <img src="../../static/images/h2.png" class="d-block w-100" alt="...">
+                </div>
+                <!-- <div class="carousel-item">
+                  <img src="../../static/images/h3.jpg" class="d-block w-100" alt="...">
+                </div>
+              </div> -->
+
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+              </button>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+    <footer>
+      <div class="container-fluid">
+        <div class="row" style="background-color:#E59C73">
+            <div class="col text-center text-light small my-2">
+            <img
+              src="../../static/images/logo.png"
+              class="img-fluid mx-2 "
+              alt="候鳥logo"
+            />
+            候鳥來了 © 2023 All Rights Reserved.
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!--get browser's location-->
+    <script>
+      //Continuously take the position
+      function initMap() {
+        if (navigator.geolocation) {
+          navigator.geolocation.watchPosition(
+            (position) => {
+              //console.log(position.coords);
+              const pos = {
+                lat: position.coords.latitude,
+                lng: position.coords.longitude,
+              };
+              console.log(pos)
+              posJson = JSON.stringify(
+                { lat: pos.lat,
+                  lng: pos.lng});
+              $.ajax({
+                url: "/getMyloc/",
+                data: posJson,
+                dataType: "json",
+                headers: { "X-CSRFToken": "{{ csrf_token }}" },
+                contentType: 'application/json; charset=UTF-8',
+                type: "POST",
+                traditional: true,    // add when we pass list, dict
+                success: function (response) {
+                  console.log(response.message)
+                  if(response.message === 'success'){
+                    // document.getElementById("startTime").innerHTML = response.weather_msg.startTime
+                    document.getElementById("location").innerHTML = response.weather_msg.location
+                    document.getElementById("weather_state").innerHTML = response.weather_msg.weather_state
+                    document.getElementById("rain_prob").innerHTML = response.weather_msg.rain_prob+'%'
+                    document.getElementById("comfort").innerHTML = response.weather_msg.comfort
+                    document.getElementById("max_tem").innerHTML = response.weather_msg.max_tem+'°C'
+                    document.getElementById("min_tem").innerHTML = response.weather_msg.min_tem+'°C'
+                  }
+
+                },
+                error: function (response) {
+                  if(response.message === 'success')
+                    console.log('Error');
+                }
+            });
+            },
+            () => {
+              handleLocationError(true);
+            }
+          );
+        } else {
+          // Browser doesn't support Geolocation
+          handleLocationError(false);
+        }
+      }
+      function handleLocationError(browserHasGeolocation) {
+        if(browserHasGeolocation)
+          window.alert("Error: 地理定位服務失敗，請重新嘗試或是確認網路服務是否成功連線。");
+        else
+          window.alert( "Error: 您的瀏覽器不支持定位功能，請換成其他瀏覽器。");
+      }
+
+    </script>
+
+    <div id="map"></div>
+    <script src="https://maps.googleapis.com/maps/api/js?key={{key}}&callback=initMap"async="" defer=""></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
   </body>
 </html>

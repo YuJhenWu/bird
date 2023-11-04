@@ -1,94 +1,289 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
 
-    <!-- Bootstrap CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
-      crossorigin="anonymous"
-    />
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 
-    <title>候鳥來了 首頁</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 
-    <script
-      src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-      integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
-      crossorigin="anonymous"
-    ></script>
 
-    <script type="text/javascript">
-      $(function () {
-        $("#film").modal("show");
-      });
-    </script>
 
-  </head>
-  <body>
-    <!-- 導覽列 -->
-    <nav class="navbar navbar-expand-sm navbar-light bg-light">
-      <img
-            src="{% static 'images/logo.png' %}"
-            class="img-fluid"
-            alt="logo"
-            title="候鳥logo"
-          />
-          <h1 class="navbar-brand mx-2" style="color:#B55135">
-            <strong>候鳥來了</strong>
-          </h1>
-      <button
-        data-toggle="collapse"
-        data-target="#submenu"
-        class="navbar-toggler"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="navbar-collapse collapse justify-content-end" id="submenu">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a href="http://127.0.0.1:8000/index_test/" class="nav-link">首頁</a>
-          </li>
-          <li class="nav-item">
-            <a href="http://127.0.0.1:8000/birdlist/" class="nav-link">候鳥圖鑑</a>
-          </li>
-          <li class="nav-item">
-            <a href="http://127.0.0.1:8000/realtime/" class="nav-link">即刻賞鳥</a>
-          </li>
-          <li class="nav-item">
-          <a href="http://127.0.0.1:8000/guide/" class="nav-link">賞鳥須知</a>
+  <link rel="shortuct icon" href="../../../static/images/logo.png">
+  <title>關於我們</title>
+  <!-- icon css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" type="text/css" href="/static/css/main.css" />
+  <link rel="stylesheet" type="text/css" href="/static/css/aboutcss.css" />
+</head>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.3/dist/sweetalert2.all.min.js"></script>
+<script>
+  const send = () => {
+    var nameElement = document.getElementById('nameInput');
+    var name = nameElement.value;
+    var emailElement = document.getElementById('emailInput');
+    var email = emailElement.value;
+    var msgElement = document.getElementById('msg');
+    var msg = msgElement.value;
+    // alert(name+email+msg);
+    if (name == "" || email == "" || msg == "") {
+      Swal.fire({
+        icon: 'warning',
+        title: '有表單未填寫喔',
+        timer: 1500,
+        timerProgressBar: true,
+      })
+    } else {
+      var formData = new FormData();
+      formData.append("entry.769965097", name);
+      formData.append("entry.238037213", email);
+      formData.append("entry.42930085", msg);
+      fetch("https://docs.google.com/forms/d/e/1FAIpQLSfxtVTZSk-rcdj6TZp4I19pxdVzdFx8gyh4q2D0j4mnnVpcXw/formResponse", {
+        method: "POST",
+        body: formData
+      }
+      )
+    }
+  }
+
+  function back() {
+    location.href = "http://127.0.0.1:8000/about/"
+    alert('感謝您的留言，我們將盡快回覆您！!')
+  }
+</script>
+
+<body>
+  <!-- 導覽列 -->
+  <nav class="navbar navbar-expand-sm navbar-light fixed-top my-nav">
+    <a href="http://127.0.0.1:8000/">
+      <img src="/static/images/logo.png" class="img-fluid ms-4 logo-style" width="30px" height="30px"
+        alt="logo" title="候鳥logo" />
+    </a>
+
+    <a href="http://127.0.0.1:8000/" class="nav-link">
+      <h1 class="navbar-brand" style="color:#B55135">
+        <strong>候鳥來了</strong>
+      </h1>
+    </a>
+    <!-- 漢堡選單 -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent"
+      aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- 漢堡選單 Id -->
+    <div class="navbar-collapse collapse justify-content-end" id="navbarToggleExternalContent">
+      <ul class="navbar-nav">
+
+        <li class="nav-item">
+          <a href="http://127.0.0.1:8000/" class="nav-link"><i class="fa fa-home"></i>首頁</a>
         </li>
-          <li class="nav-item">
-            <a href="http://127.0.0.1:8000/about/" class="nav-link text-danger">關於我們</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+
+        <li class="nav-item">
+          <a href="http://127.0.0.1:8000/realtime/" class="nav-link"><i class="fa-solid fa-dove"></i>即刻賞鳥</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="http://127.0.0.1:8000/birdlist/" class="nav-link"><i class="fa fa-book"></i>候鳥圖鑑</i></a>
+        </li>
+
+        <li class="nav-item">
+          <a href="http://127.0.0.1:8000/guide/" class="nav-link"><i class="fa fa-camera-retro"></i>賞鳥須知</a>
+        </li>
+
+        <li class="nav-item">
+          <a href="http://127.0.0.1:8000/about/" class="nav-link text-danger"><i
+              class="fa fa-address-book"></i></i>關於我們</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- my-5排版用 -->
+  <div class="row my-5">
+  </div>
 
 
-    <div class="container-fluid">
-      <div class="row mt-5">
-
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="team-intro-box">
+        <div class="title-intro">
+          <div class="title-box">
+            <span class="intro-title">
+              <img src="../../../static/images/IdentificationCard.png" class="img-fluid mb-1" style="width: 30px;
+              height: 28px;" alt="候鳥圖鑑icon" />團隊介紹</span>
+          </div>
+        </div>
+        <p class="intro-text md-6">
+          大家好！我們是「候鳥來了」團隊，由五位熱愛鳥類且各具專業的成員組成。<br />本網站主旨是探討候鳥的奧秘，提供關於候鳥的相關知識和資訊。<br />此外，我們也會分享關於保護候鳥及其棲息地的方法，以及如何準備賞鳥的裝備。<br />透過「候鳥來了」網站，我們希望能夠喚起更多人對候鳥的關注與保護意識，<br />以一個全面而多元的視角，向大眾介紹候鳥的美妙之處，一同探索這個美麗而神秘的候鳥世界！
+        </p>
       </div>
     </div>
-    <div class="row" >
-      <div class="col-1"></div>
-      <p> 關於我們</p>
+
+  </div>
+
+
+  <!-- 排版用60px -->
+  <div class="row my-3"></div>
+
+  <div class="container-fluid">
+    <div class="row justify-content-center text-center">
+      <div class="col-4">
+        <div class="avatar">
+          <img class="img-fluid" src="../../../static/images/p1.jpg" />
+        </div>
+        <div class="p-name">
+          Peiyan Yu
+        </div>
+        <div class="p-intro">
+          Leader, Front-end developer
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="avatar">
+          <img class="img-fluid" src="../../../static/images/p2.png" />
+        </div>
+        <div class="p-name">
+          Bob Wang </div>
+        <div class="p-intro">
+          Back-end developer </div>
+      </div>
+      <div class="col-4">
+        <div class="avatar">
+          <img class="img-fluid" src="../../../static/images/p3.jpg" />
+        </div>
+        <div class="p-name">
+          Yuzhen Wu
+        </div>
+        <div class="p-intro">
+          Back-end developer
+        </div>
+      </div>
     </div>
+  </div>
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script> -->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <!-- 排版用 -->
+  <div class="my-4"></div>
 
-  </body>
+
+  <div class="container">
+    <div class="row justify-content-center text-center">
+      <!-- jiamin -->
+      <div class="col">
+        <div class="avatar">
+          <img class="img-fluid" src="../../../static/images/p4.jpg" />
+        </div>
+        <div class="p-name">
+          Jiamin Qiu
+        </div>
+        <div class="p-intro">
+          Database Administrator
+        </div>
+      </div>
+      <div class="col">
+        <div class="avatar">
+          <img class="img-fluid" src="../../../static/images/p5.jpg" />
+        </div>
+        <div class="p-name">
+          Zhilin Li
+        </div>
+        <div class="p-intro">
+          UI Designer
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 排版用 -->
+  <div class="row my-5"></div>
+
+  <!-- 聯絡我們 -->
+  <div class="container-fluid contact-box">
+    <div class="col-12 col-md-6 offset-md-3 text-center">
+      <div class="row my-3"></div>
+      <h1 class="h3 border-bottom border-dark fw-bold">連絡討論</h1>
+      <p class="small my-2">
+        若有什麼問題或建議，歡迎您留下訊息。
+      </p>
+      <iframe src="" name="hidden_Area" style="display:none;"
+        onload="this.onload=function(){location.href='aboutus copy.html'; back();}"></iframe>
+      <form method="post" target="hidden_Area">
+        <div class="row text-start">
+          <div class="col-12 col-md-6 my-2">
+            <b class="warning">如何稱呼?</b>
+            <input type="text" class="form-control" placeholder="請填姓名或稱謂 (必填)" id="nameInput" required>
+          </div>
+          <div class="col-12 col-md-6 my-2">
+            <b class="warning">E-mail</b>
+            <input type="email" class="form-control" placeholder="請輸入E-mail (必填)" id="emailInput" required>
+          </div>
+          <div class="col-12 my-2">
+            <b class="warning">問題與建議</b>
+            <textarea name="" id="msg" cols="30" rows="8" placeholder="請輸入留言，最多300個字 謝謝" class="form-control"
+              maxlength="300" required></textarea>
+          </div>
+        </div>
+        <button class="btn btn-outline-secondary mx-2" value="" onclick="confirmReset();">重新填寫</button>
+        <input type="submit" class="btn btn-success green" value="發送表單" onclick="send();">
+        <div class="row my-3"></div>
+    </div>
+    </form>
+  </div>
+
+  <!-- 確認的彈跳視窗 -->
+  <script>
+    const confirmReset = () => {
+      Swal.fire({
+        icon: 'question',
+        title: 'Are you sure?',
+        text: '確定要重新填寫嗎？',
+        showCancelButton: true,
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No'
+      }).then((result) => {
+        console.log(result)
+        if (result.isConfirmed) {
+          // 使用 reset() 方法來重置表單
+          document.querySelector("form").reset();
+        } else {
+          // 不執行任何操作
+        }
+      })
+    }
+  </script>
+
+
+<footer>
+  <div class="container-fluid">
+    <div class="row" style="background-color:#E59C73">
+        <div class="col text-center text-light small my-2">
+        <img
+          src="../../static/images/logo.png"
+          class="img-fluid mx-2 "
+          alt="候鳥logo"
+        />
+        <!-- 地址：242新北市新莊區中正路510<br>
+        電話：+ 886 2 2905 2000 <br>
+        Email：migratory_birds@mail.fju.edu.tw <br> -->
+
+        候鳥來了 © 2023 All Rights Reserved.
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+  <!-- Optional JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+
+</body>
+
 </html>
