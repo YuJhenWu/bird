@@ -1,0 +1,331 @@
+@import url("https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300&family=Noto+Sans+TC&family=Roboto+Serif:opsz@8..144&display=swap");
+
+body {
+  background-color: #ffffff;
+  display: flex;
+  background-repeat: no-repeat;
+  background-size: cover;
+  flex-direction: column;
+  min-height: 100vh;
+  margin: 0;
+  /* font-family: 'Kiwi Maru', serif; */
+}
+
+.logo img {
+  width: 30px;
+  height: auto;
+  /* 如果想要保持纵横比，请使用 "auto" */
+  margin-right: 10px;
+  /* 可根据需要调整 */
+  vertical-align: middle;
+  /* 可根据需要调整垂直对齐方式 */
+}
+
+/* .banner {
+  background-image: url("../images/bg.png");
+  height: 710px;
+  padding-top: 90px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+} */
+
+.quote {
+  text-align: left;
+  width: 90%;
+  margin: 0 auto;
+  font-size: 40px;
+  color: rgb(0, 0, 0);
+}
+
+.my-nav {
+  background-color: #ffffff;
+  box-shadow: 2px 2px 5px rgba(93, 83, 72, 0.3);
+  position: fixed;
+}
+
+/* 导航链接样式 */
+.nav-linkcolor {
+  color: #563030;
+  text-decoration: none;
+  /* 其他样式属性 */
+}
+
+/* 标题样式 */
+.navbar-brand {
+  color: #b55135;
+}
+
+/* 占位符，避免导航栏位置变化时页面内容突然移动 */
+.nav-placeholder {
+  height: 50px;
+  /* 根据导航栏高度调整 */
+}
+
+/* 排版 */
+.typesetting {
+  margin-top: 60px;
+  margin-bottom: 60px;
+}
+
+.typesetting-org {
+  width: 100%;
+  height: 60px;
+  background-color: #ffe8c9;
+  position: relative;
+  overflow: hidden;
+  z-index: -3;
+}
+
+.typesetting-whi {
+  width: 100%;
+  height: 60px;
+  background-color: #ffffff;
+  position: relative;
+  overflow: hidden;
+  z-index: -3;
+}
+
+.typesetting2 {
+  margin-top: 60px;
+  margin-bottom: 80px;
+}
+/* 排版-end */
+
+/* 團隊介紹 */
+.team-intro,
+.team-intro * {
+  box-sizing: border-box;
+}
+
+.team-intro-box {
+  background: #ffe8c9;
+  border-radius: 20px;
+  width: 1111px;
+  padding: 30px 15px 15px 15px;
+  display: flex;
+  flex-direction: row;
+  gap: 30px;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.title-intro {
+  flex-shrink: 0;
+  width: 217px;
+  height: 55px;
+  position: relative;
+}
+
+.intro-text {
+  color: #525252;
+  text-align: left;
+  font: 400 16px "Space Grotesk", sans-serif;
+  position: relative;
+  /* width: 600px; */
+}
+
+.title-box {
+  width: 200px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 61px;
+  border: 3px solid #c9b079;
+  background: #fff;
+  box-shadow: 0px 4px 4px 0px rgba(88, 88, 88, 0.25);
+  justify-content: center;
+  text-align: center;
+  line-height: 46px;
+}
+
+.intro-title {
+  color: #b55135;
+  text-align: center;
+  font: 700 20px/120% "Roboto Serif", sans-serif;
+  /* position: absolute;
+  left: calc(50% - 37px);
+  top: 10px; */
+}
+/* 團隊介紹-end */
+
+/* 成員介紹 */
+.avatar {
+  background-size: cover;
+  display: inline-block;
+  position: relative;
+  width: 110px;
+  height: 110px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.p-name {
+  color: #29180f;
+  text-align: center;
+  font: 400 20px/150% "Roboto Serif", sans-serif;
+  position: relative;
+  /* left: calc(50% - 95px);
+  top: 0px;
+  width: 190px; */
+}
+
+.p-intro {
+  color: #8b817c;
+  text-align: center;
+  font: 400 16px/150% "Roboto Serif", sans-serif;
+  position: relative;
+  /* left: calc(50% - 219.5px);
+  top: 64px; */
+}
+/* 成員介紹-end */
+
+/* 聯絡我們 */
+.contact-box,
+.contact-box * {
+  box-sizing: border-box;
+}
+
+.contact-box {
+  background: #ffe8c9;
+  /* padding: 60px; */
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 聯絡我們-end */
+
+/* 賞鳥須知 */
+.guide-title-box {
+  background: #ffffff;
+  border-radius: 61px;
+  border-style: solid;
+  border-color: #c9b079;
+  border-width: 3px;
+  width: 210px;
+  height: 50px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* flex-wrap: wrap; */
+  left: 70px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+}
+
+.guide {
+  color: #b55135;
+  text-align: center;
+  font: 700 22px/120% "Roboto Serif", sans-serif;
+  /* position: absolute;
+  left: calc(50% - 37px);
+  top: 10px; */
+}
+
+.guide-title {
+  color: #525252;
+  font: 700 20px/120% "Roboto Serif", sans-serif;
+  text-align: left;
+  max-width: 80vw;
+  /* 設定文字的最大寬度為視窗寬度的 80% */
+  /* font-size: 3vw;  */
+  /* position: relative;
+  left: 75px; */
+}
+
+.guide-text {
+  color: #525252;
+  font: 600 16px/120% "Roboto Serif", sans-serif;
+  text-align: left;
+  position: relative;
+  line-height: 40px;
+  width: 100%;
+  display: flex;
+}
+
+.guide-box {
+  /* background: #ffe8c9; */
+  /* padding-top: 50px; */
+  width: 100%;
+  height: 390px;
+  position: relative;
+  overflow: hidden;
+  z-index: -2;
+}
+
+.box-org {
+  background-color: #ffe8c9;
+}
+
+.box-whi {
+  background-color: #ffffff;
+}
+
+.circle-container {
+  position: relative;
+  /* 设置容器为相对定位 */
+  display: inline-block;
+  /* 确保容器与内容的宽度相符 */
+}
+
+.circle-text {
+  color: #525252;
+  font: 700 20px/120% "Roboto Serif", sans-serif;
+  text-align: left;
+  position: relative;
+  /* 设置文本为相对定位 */
+}
+
+.circle {
+  position: absolute;
+  /* 设置小圆圈为绝对定位 */
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #f7cdb1;
+  margin-left: -10px;
+  /* 调整圆圈与文字的间距 */
+  z-index: -1;
+  /* 将圆圈的z-index设置为负值，使其在文字后方 */
+}
+/* 賞鳥須知-end */
+
+/* footer */
+.footer-section {
+  width: 100%;
+  background-color: #e59c73;
+  color: #ffffff;
+  text-align: center;
+}
+
+.footer-text {
+  font-size: 16px;
+  /* 替换为合适的字体大小 */
+  color: white;
+  line-height: 100px;
+}
+
+.footer-menu {
+  line-height: 100px;
+}
+
+.footer-menu li {
+  display: inline-block;
+  /* 修改float为display属性 */
+  margin-right: 1em;
+}
+
+.footer-menu a {
+  font-size: 16px;
+  /* 替换为合适的字体大小 */
+  color: #ffffff;
+  /* 替换为合适的颜色 */
+  cursor: pointer;
+}
+
+/* footer-end */

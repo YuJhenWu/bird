@@ -26,7 +26,7 @@
   <body>
     <!-- 導覽列 -->
     <nav class="navbar navbar-expand-md  navbar-light fixed-top my-nav">
-      <a href="http://127.0.0.1:8000/index_test/">
+      <a href="http://211.75.173.165/">
           <img
             src="../../../static/images/logo.png"
             class="img-fluid ms-4 logo-style"
@@ -35,7 +35,7 @@
           />
       </a>
 
-      <a href="http://127.0.0.1:8000/index_test/" class="nav-link">
+      <a href="http://211.75.173.165/" class="nav-link">
         <h1 class="navbar-brand" style="color : #B55135;">
           <strong>候鳥來了</strong>
         </h1>
@@ -48,28 +48,25 @@
       <!-- 漢堡選單 Id -->
       <div class="navbar-collapse collapse justify-content-end" id="navbarToggleExternalContent">
         <ul class="navbar-nav">
+
           <li class="nav-item">
-            <a href="http://127.0.0.1:8000/" class="nav-link text-success">回到測試頁面</a>
+            <a href="http://211.75.173.165/" class="nav-link"><i class="fa fa-home"></i>首頁</a>
           </li>
 
           <li class="nav-item">
-            <a href="http://127.0.0.1:8000/index_test/" class="nav-link"><i class="fa fa-home"></i>首頁</a>
+            <a href="http://211.75.173.165/realtime/" class="nav-link"><i class="fa-solid fa-dove"></i>即刻賞鳥</a>
           </li>
 
           <li class="nav-item">
-            <a href="http://127.0.0.1:8000/realtime/" class="nav-link"><i class="fa-solid fa-dove"></i>即刻賞鳥</a>
+            <a href="http://211.75.173.165/birdlist/" class="nav-link text-danger"><i class="fa fa-book"></i>候鳥圖鑑</i></a>
           </li>
 
           <li class="nav-item">
-            <a href="http://127.0.0.1:8000/birdlist/" class="nav-link text-danger"><i class="fa fa-book"></i>候鳥圖鑑</i></a>
+          <a href="http://211.75.173.165/guide/" class="nav-link"><i class="fa fa-camera-retro"></i>賞鳥須知</a>
           </li>
 
           <li class="nav-item">
-          <a href="http://127.0.0.1:8000/guide/" class="nav-link"><i class="fa fa-camera-retro"></i>賞鳥須知</a>
-          </li>
-
-          <li class="nav-item">
-            <a href="http://127.0.0.1:8000/about/" class="nav-link "><i class="fa fa-address-book"></i></i>關於我們</a>
+            <a href="http://211.75.173.165/about/" class="nav-link "><i class="fa fa-address-book"></i></i>關於我們</a>
           </li>
         </ul>
       </div>
@@ -80,15 +77,17 @@
 
       <!-- my-5 = 6rem的距離 -->
       <div class="row my-5"></div>
-      <div class="row my-5" style=" justify-content: center;">
-        <div class="Rectangle">
-          <span style="color: #A24F49; font-size: 36px;">
-          <img src="../../../static/images/bird-image.png"
-          class="img-fluid mb-2"
-          style="width: 50px;
-          height: 52px;"
-          alt="候鳥圖鑑icon"
-          />候鳥圖鑑</span>
+      <div class="container">
+        <div class="row my-5" style=" justify-content: center;">
+          <div class="Rectangle">
+            <span class="Rectangle-title">
+            <img src="../../../static/images/bird-image.png"
+            class="img-fluid mb-2"
+            style="width: 50px;
+            height: 52px;"
+            alt="候鳥圖鑑icon"
+            />候鳥圖鑑</span>
+          </div>
         </div>
       </div>
       <!-- 熱門搜尋功能 -->
@@ -131,22 +130,76 @@
       </div> -->
       <!-- 圖鑑 -->
       <!-- Button trigger modal -->
+
+      <!-- 137~204都OK -->
       <div class="container-fluid">
         <div class="row text-center my-5">
           <div class="col-12 col-md-4 col-lg-2 offset-lg-3 my-3">
-            <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/304971031/1200" class="img-fluid productImg" alt="" title="看詳細介紹" data-bs-toggle="modal" data-bs-target="#bird1" style=" border-radius:50%;">
+            <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/304971031/1200" class="img-fluid productImg" alt="" title="看詳細介紹" data-bs-toggle="modal" data-bs-target="#bird1" style="border-radius:50%;">
             <h5 class="mt-1"><b>黃頭鷺</b></h5>
           </div>
           <div class="col-12 col-md-4 col-lg-2 my-3">
-            <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/85660691/1200" class="img-fluid productImg" alt="" title="看詳細介紹" data-bs-toggle="modal" data-bs-target="#bird2" style=" border-radius:50%;">
+            <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/85660691/1200" class="img-fluid productImg" alt="" title="看詳細介紹" data-bs-toggle="modal" data-bs-target="#bird2" style="border-radius:50%;">
             <h5 class="mt-1"><b>黑面琵鷺</b></h5>
           </div>
           <div class="col-12 col-md-4 col-lg-2 my-3">
-            <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/158861511/1200" class="img-fluid productImg" alt="" title="看詳細介紹" data-bs-toggle="modal" data-bs-target="#bird3" style=" border-radius:50%;">
+            <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/158861511/1200" class="img-fluid productImg" alt="" title="看詳細介紹" data-bs-toggle="modal" data-bs-target="#bird3" style="border-radius:50%;">
             <h5 class="mt-1"><b>白腹鶇</b></h5>
           </div>
         </div>
       </div>
+
+      <div class="container-fluid">
+        <div class="row text-center my-5">
+          <div class="col-12 col-md-4 col-lg-2 offset-lg-3 my-3">
+            <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/253685851/1200" class="img-fluid productImg" alt="" title="看詳細介紹" data-bs-toggle="modal" data-bs-target="#bird4" style=" border-radius:50%;">
+            <h5 class="mt-1"><b>青足鷸</b></h5>
+          </div>
+          <div class="col-12 col-md-4 col-lg-2 my-3">
+            <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/89425211/1200" class="img-fluid productImg" alt="" title="看詳細介紹" data-bs-toggle="modal" data-bs-target="#bird5" style=" border-radius:50%; margin-right:50%;">
+            <h5 class="mt-1"><b>燕鴴</b></h5>
+          </div>
+          <div class="col-12 col-md-4 col-lg-2 my-3">
+            <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/254741801/1200" class="img-fluid productImg" alt="" title="看詳細介紹" data-bs-toggle="modal" data-bs-target="#bird6" style=" border-radius:50%;">
+            <h5 class="mt-1"><b>蒼鷺</b></h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row text-center my-5">
+          <div class="col-12 col-md-4 col-lg-2 offset-lg-3 my-3">
+            <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/63893401/1800" class="img-fluid productImg" alt="" title="看詳細介紹" data-bs-toggle="modal" data-bs-target="#bird7" style=" border-radius:50%;">
+            <h5 class="mt-1"><b>小水鴨</b></h5>
+          </div>
+          <div class="col-12 col-md-4 col-lg-2 my-3">
+            <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/300124811/1200" class="img-fluid productImg" alt="" title="看詳細介紹" data-bs-toggle="modal" data-bs-target="#bird8" style=" border-radius:50%; margin-right:50%;">
+            <h5 class="mt-1"><b>琵嘴鴨</b></h5>
+          </div>
+          <div class="col-12 col-md-4 col-lg-2 my-3">
+            <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/158664621/1200" class="img-fluid productImg" alt="" title="看詳細介紹" data-bs-toggle="modal" data-bs-target="#bird9" style=" border-radius:50%;">
+            <h5 class="mt-1"><b>花嘴鴨</b></h5>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row text-center my-5">
+          <div class="col-12 col-md-4 col-lg-2 offset-lg-3 my-3">
+            <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/256164041/1200" class="img-fluid productImg" alt="" title="看詳細介紹" data-bs-toggle="modal" data-bs-target="#bird10" style=" border-radius:50%;">
+            <h5 class="mt-1"><b>紅隼</b></h5>
+          </div>
+          <div class="col-12 col-md-4 col-lg-2 my-3">
+            <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/45038811/1200" class="img-fluid productImg" alt="" title="看詳細介紹" data-bs-toggle="modal" data-bs-target="#bird11" style=" border-radius:50%;">
+            <h5 class="mt-1"><b>高蹺鴴</b></h5>
+          </div>
+          <div class="col-12 col-md-4 col-lg-2 my-3">
+            <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/216990981/1200" class="img-fluid productImg" alt="" title="看詳細介紹" data-bs-toggle="modal" data-bs-target="#bird12" style=" border-radius:50%;">
+            <h5 class="mt-1"><b>小環頸鴴</b></h5>
+          </div>
+        </div>
+      </div>
+      <!-- 137~204都OK -->
 
         <!-- Modal -->
         <div class="modal fade" id="bird1" tabindex="-1" aria-labelledby="bird1" aria-hidden="true">
@@ -160,11 +213,7 @@
                 <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/304971031/1200" class="img-thumbnail" style="width: 500px;">
                 <table class="my-5">
                   <tr>
-                    <td class="text-orange">鳥種名　　　　</td>
-                    <td>黃頭鷺</td>
-                  </tr>
-                  <tr>
-                    <td class="text-orange">科別名</td>
+                    <td class="text-orange">科別名　　　　</td>
                     <td>鷺科</td>
                   </tr>
                   <tr>
@@ -200,7 +249,7 @@
         </div>
 
                 <!-- Modal -->
-                <div class="modal fade" id="bird2" tabindex="-1" aria-labelledby="bird2" aria-hidden="true">
+        <div class="modal fade" id="bird2" tabindex="-1" aria-labelledby="bird2" aria-hidden="true">
                   <div class="modal-dialog modal-lg modal-dialog-scrollable">
                     <div class="modal-content">
                       <div class="modal-header">
@@ -211,32 +260,32 @@
                         <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/85660691/1200" class="img-thumbnail" style="width: 500px;">
                         <table class="my-5">
                           <tr>
-                            <td class="text-orange">科別名</td>
+                            <td class="text-orange">科別名　　　　</td>
                             <td>鷺科</td>
                           </tr>
                           <tr>
                             <td class="text-orange">別名</td>
-                            <td>牛背鷺</td>
+                            <td>撓杯</td>
                           </tr>
                           <tr>
                             <td class="text-orange">起始月份</td>
-                            <td>3月</td>
+                            <td>10月</td>
                           </tr>
                           <tr>
                             <td class="text-orange">離開月份</td>
-                            <td>9月</td>
+                            <td>4月</td>
                           </tr>
                           <tr>
                             <td class="text-orange">到來季節</td>
-                            <td>夏</td>
+                            <td>冬</td>
                           </tr>
                           <tr>
                             <td class="text-orange">棲息地</td>
-                            <td>華江雁鴨自然公園,田寮洋賞鳥區</td>
+                            <td>華江雁鴨自然公園,田寮洋賞鳥區,鰲鼓溼地森林園區</td>
                           </tr>
                           <tr>
                             <td class="text-orange">簡介</td>
-                            <td>小而結實的白色鷺，有粗壯的黃嘴。非繁殖期時羽色幾乎全身雪白、腳為黑褐色；繁殖期時，腳為紅色或黃色，頭部、頸部和背部出現黃色斑塊。常尾隨於牛群及農耕機四周或停棲於牛背上。</td>
+                            <td>大型白色水鳥，有長的飯匙狀的嘴。繁殖期成鳥頭部有長飾羽，胸部有黃色。整個面部為黑色裸皮，使其與白琵鷺區分開，白琵鷺是其棲地範圍內唯一的其他琵鷺。經常聚集成大群，偶爾與白琵鷺混在一起。在泥灘，河口，湖泊和大型草本沼澤地覓食，經常在水中橫向掃動來篩捕水生無脊椎動物。</td>
                           </tr>
                         </table>
                       </div>
@@ -244,7 +293,7 @@
                       </div>
                     </div>
                   </div>
-                </div>
+        </div>
 
                         <!-- Modal -->
         <div class="modal fade" id="bird3" tabindex="-1" aria-labelledby="bird3" aria-hidden="true">
@@ -258,11 +307,7 @@
                 <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/158861511/1200" class="img-thumbnail" style="width: 500px;">
                 <table class="my-5">
                   <tr>
-                    <td class="text-orange">鳥種名　　　　</td>
-                    <td>白腹鶇</td>
-                  </tr>
-                  <tr>
-                    <td class="text-orange">科別名</td>
+                    <td class="text-orange">科別名　　　　</td>
                     <td>鷺科</td>
                   </tr>
                   <tr>
@@ -296,6 +341,423 @@
             </div>
           </div>
         </div>
+
+        <div class="modal fade" id="bird4" tabindex="-1" aria-labelledby="bird1" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="bird1"><b>青足鷸</b></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/253685851/1200" class="img-thumbnail" style="width: 500px;">
+                <table class="my-5">
+                  <tr>
+                    <td class="text-orange">科別名　　　　</td>
+                    <td>鷸科</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">別名</td>
+                    <td>青腳鷸</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">起始月份</td>
+                    <td>11月</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">離開月份</td>
+                    <td>4月</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">到來季節</td>
+                    <td>冬</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">棲息地</td>
+                    <td>華江雁鴨自然公園,田寮洋賞鳥區,成龍濕地</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">簡介</td>
+                    <td>眼神溫柔的大型涉禽，有著略微上翹的嘴。整體為灰色、白色腹部和綠色腿。飛行中看上去上面黑色，寬闊的白色條紋（從腰部）延伸到背部中間。比赤足鷸略大且較瘦長。通常單獨或小群活動。主要在水中走動，以啄食和用嘴橫掃覓食。在北歐和亞洲的廣泛區域繁殖；遷移至非洲，南亞和澳大利亞，見於各種不同的濕地棲息地。</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+
+                <!-- Modal -->
+        <div class="modal fade" id="bird5" tabindex="-1" aria-labelledby="bird2" aria-hidden="true">
+                  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="bird1"><b>燕鴴</b></h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/143015111/1200" class="img-thumbnail" style="width: 500px;">
+                        <table class="my-5">
+                          <tr>
+                            <td class="text-orange">科別名　　　　</td>
+                            <td>鷺科</td>
+                          </tr>
+                          <tr>
+                            <td class="text-orange">別名</td>
+                            <td>撓杯</td>
+                          </tr>
+                          <tr>
+                            <td class="text-orange">起始月份</td>
+                            <td>10月</td>
+                          </tr>
+                          <tr>
+                            <td class="text-orange">離開月份</td>
+                            <td>4月</td>
+                          </tr>
+                          <tr>
+                            <td class="text-orange">到來季節</td>
+                            <td>冬</td>
+                          </tr>
+                          <tr>
+                            <td class="text-orange">棲息地</td>
+                            <td>華江雁鴨自然公園,田寮洋賞鳥區,鰲鼓溼地森林園區</td>
+                          </tr>
+                          <tr>
+                            <td class="text-orange">簡介</td>
+                            <td>大型白色水鳥，有長的飯匙狀的嘴。繁殖期成鳥頭部有長飾羽，胸部有黃色。整個面部為黑色裸皮，使其與白琵鷺區分開，白琵鷺是其棲地範圍內唯一的其他琵鷺。經常聚集成大群，偶爾與白琵鷺混在一起。在泥灘，河口，湖泊和大型草本沼澤地覓食，經常在水中橫向掃動來篩捕水生無脊椎動物。</td>
+                          </tr>
+                        </table>
+                      </div>
+                      <div class="modal-footer">
+                      </div>
+                    </div>
+                  </div>
+        </div>
+
+                        <!-- Modal -->
+        <div class="modal fade" id="bird6" tabindex="-1" aria-labelledby="bird3" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="bird1"><b>蒼鷺</b></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/254741801/1200" class="img-thumbnail" style="width: 500px;">
+                <table class="my-5">
+                  <tr>
+                    <td class="text-orange">科別名　　　　</td>
+                    <td>鷺科</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">別名</td>
+                    <td>牛背鷺</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">起始月份</td>
+                    <td>3月</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">離開月份</td>
+                    <td>9月</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">到來季節</td>
+                    <td>夏</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">棲息地</td>
+                    <td>華江雁鴨自然公園,田寮洋賞鳥區</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">簡介</td>
+                    <td>小而結實的白色鷺，有粗壯的黃嘴。非繁殖期時羽色幾乎全身雪白、腳為黑褐色；繁殖期時，腳為紅色或黃色，頭部、頸部和背部出現黃色斑塊。常尾隨於牛群及農耕機四周或停棲於牛背上。</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="bird7" tabindex="-1" aria-labelledby="bird3" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="bird1"><b>小水鴨</b></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/63893401/1800" class="img-thumbnail" style="width: 500px;">
+                <table class="my-5">
+                  <tr>
+                    <td class="text-orange">科別名　　　　</td>
+                    <td>鷺科</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">別名</td>
+                    <td>牛背鷺</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">起始月份</td>
+                    <td>3月</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">離開月份</td>
+                    <td>9月</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">到來季節</td>
+                    <td>夏</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">棲息地</td>
+                    <td>華江雁鴨自然公園,田寮洋賞鳥區</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">簡介</td>
+                    <td>小而結實的白色鷺，有粗壯的黃嘴。非繁殖期時羽色幾乎全身雪白、腳為黑褐色；繁殖期時，腳為紅色或黃色，頭部、頸部和背部出現黃色斑塊。常尾隨於牛群及農耕機四周或停棲於牛背上。</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="bird8" tabindex="-1" aria-labelledby="bird3" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="bird1"><b>琵嘴鴨</b></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/300124811/1200" class="img-thumbnail" style="width: 500px;">
+                <table class="my-5">
+                  <tr>
+                    <td class="text-orange">科別名　　　　</td>
+                    <td>鷺科</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">別名</td>
+                    <td>牛背鷺</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">起始月份</td>
+                    <td>3月</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">離開月份</td>
+                    <td>9月</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">到來季節</td>
+                    <td>夏</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">棲息地</td>
+                    <td>華江雁鴨自然公園,田寮洋賞鳥區</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">簡介</td>
+                    <td>小而結實的白色鷺，有粗壯的黃嘴。非繁殖期時羽色幾乎全身雪白、腳為黑褐色；繁殖期時，腳為紅色或黃色，頭部、頸部和背部出現黃色斑塊。常尾隨於牛群及農耕機四周或停棲於牛背上。</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="bird9" tabindex="-1" aria-labelledby="bird3" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="bird1"><b>花嘴鴨</b></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/158664621/1200" class="img-thumbnail" style="width: 500px;">
+                <table class="my-5">
+                  <tr>
+                    <td class="text-orange">科別名　　　　</td>
+                    <td>鷺科</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">別名</td>
+                    <td>牛背鷺</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">起始月份</td>
+                    <td>3月</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">離開月份</td>
+                    <td>9月</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">到來季節</td>
+                    <td>夏</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">棲息地</td>
+                    <td>華江雁鴨自然公園,田寮洋賞鳥區</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">簡介</td>
+                    <td>小而結實的白色鷺，有粗壯的黃嘴。非繁殖期時羽色幾乎全身雪白、腳為黑褐色；繁殖期時，腳為紅色或黃色，頭部、頸部和背部出現黃色斑塊。常尾隨於牛群及農耕機四周或停棲於牛背上。</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="bird10" tabindex="-1" aria-labelledby="bird3" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="bird1"><b>紅隼</b></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/256164041/1200" class="img-thumbnail" style="width: 500px;">
+                <table class="my-5">
+                  <tr>
+                    <td class="text-orange">科別名　　　　</td>
+                    <td>鷺科</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">別名</td>
+                    <td>牛背鷺</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">起始月份</td>
+                    <td>3月</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">離開月份</td>
+                    <td>9月</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">到來季節</td>
+                    <td>夏</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">棲息地</td>
+                    <td>華江雁鴨自然公園,田寮洋賞鳥區</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">簡介</td>
+                    <td>小而結實的白色鷺，有粗壯的黃嘴。非繁殖期時羽色幾乎全身雪白、腳為黑褐色；繁殖期時，腳為紅色或黃色，頭部、頸部和背部出現黃色斑塊。常尾隨於牛群及農耕機四周或停棲於牛背上。</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="bird11" tabindex="-1" aria-labelledby="bird3" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="bird1"><b>高蹺鴴</b></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/45038811/1200" class="img-thumbnail" style="width: 500px;">
+                <table class="my-5">
+                  <tr>
+                    <td class="text-orange">科別名　　　　</td>
+                    <td>鷺科</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">別名</td>
+                    <td>牛背鷺</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">起始月份</td>
+                    <td>3月</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">離開月份</td>
+                    <td>9月</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">到來季節</td>
+                    <td>夏</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">棲息地</td>
+                    <td>華江雁鴨自然公園,田寮洋賞鳥區</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">簡介</td>
+                    <td>小而結實的白色鷺，有粗壯的黃嘴。非繁殖期時羽色幾乎全身雪白、腳為黑褐色；繁殖期時，腳為紅色或黃色，頭部、頸部和背部出現黃色斑塊。常尾隨於牛群及農耕機四周或停棲於牛背上。</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal fade" id="bird12" tabindex="-1" aria-labelledby="bird3" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="bird1"><b>小環頸鴴</b></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                <img src="https://cdn.download.ams.birds.cornell.edu/api/v1/asset/216990981/1200" class="img-thumbnail" style="width: 500px;">
+                <table class="my-5">
+                  <tr>
+                    <td class="text-orange">科別名　　　　</td>
+                    <td>鷺科</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">別名</td>
+                    <td>牛背鷺</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">起始月份</td>
+                    <td>3月</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">離開月份</td>
+                    <td>9月</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">到來季節</td>
+                    <td>夏</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">棲息地</td>
+                    <td>華江雁鴨自然公園,田寮洋賞鳥區</td>
+                  </tr>
+                  <tr>
+                    <td class="text-orange">簡介</td>
+                    <td>小而結實的白色鷺，有粗壯的黃嘴。非繁殖期時羽色幾乎全身雪白、腳為黑褐色；繁殖期時，腳為紅色或黃色，頭部、頸部和背部出現黃色斑塊。常尾隨於牛群及農耕機四周或停棲於牛背上。</td>
+                  </tr>
+                </table>
+              </div>
+              <div class="modal-footer">
+              </div>
+            </div>
+          </div>
+        </div>
+
 
 
 

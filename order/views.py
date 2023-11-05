@@ -6,6 +6,7 @@ from django.http import JsonResponse
 from order.models import BirdModel
 import json
 import requests
+from django.http import JsonResponse
 
 
 mypos = {'lat' : 22.63720862650741, 'lng' : 121.50426592818646}
@@ -37,7 +38,7 @@ def getMyloc(request):
 @csrf_exempt
 def test(request):
     global mypos  #global
-    google_api_key = ''
+    google_api_key = ' '
     recent_msg = recent()
     weather_msg = weather()
     myaddress = latlng_to_address(mypos)
@@ -59,28 +60,39 @@ def test(request):
     return render(request,'test.html',locals())
 
 
-    
+
 def map(request):
     global mypos  #global
-    google_api_key = ''
+    google_api_key = ' '
     center_lan_lng ={ 'lat': 25.119136595732403, 'lng': 121.4708654841385 }#關渡自然公園
     #################
     #################
     ################# params: (origin_lan_lng, destination_lan_lng)
-    origin_lan_lng ={'lat': mypos['lat'], 'lng':mypos['lng']} 
-    destination_lan_lng = {'lat': address_to_latlng('112台北市北投區關渡路55號')['lat'], 'lng': address_to_latlng('112台北市北投區關渡路55號')['lng']} 
+    origin_lan_lng ={'lat': mypos['lat'], 'lng':mypos['lng']}
+    destination_lan_lng = {'lat': address_to_latlng('112台北市北投區關渡路55號')['lat'], 'lng': address_to_latlng('112台北市北投區關渡路55號')['lng']}
     #print(origin_lan_lng)
     #print(destination_lan_lng)
-    return render(request,'map.html', {'key':google_api_key,'center':center_lan_lng,'origin':origin_lan_lng,'destination':destination_lan_lng})
+    return render(request,'map.html',locals())
 
 
+def update_destination(request):
+    new_location = request.POST.get('new_location')
+
+    # 在這裡您可以處理新地點的相關邏輯，例如將地址轉換為經緯度等
+    new_lat_lng = address_to_latlng(new_location)
+
+    # 更新 destination_lan_lng 的值
+    destination_lan_lng['lat'] = new_lat_lng['lat']
+    destination_lan_lng['lng'] = new_lat_lng['lng']
+
+    return JsonResponse({'message': '地點更新成功'})
 ### index
 def index(request):
-    google_api_key = ''
+    google_api_key = ' '
     weather_msg = weather()
     if request.method == "POST":
         weather_msg = weather()
-    return render(request,'index.html',{'weather_msg': weather_msg, 'key' : google_api_key})
+    return render(request,'index.html',locals())
 
 
 #### about
@@ -88,11 +100,11 @@ def about(request):
     return render(request,'about/about.html')
 
 def index_test(request):
-    google_api_key = ''
+    google_api_key = ' '
     weather_msg = weather()
     if request.method == "POST":
         weather_msg = weather()
-    return render(request,'index_test.html',{'weather_msg': weather_msg, 'key' : google_api_key})
+    return render(request,'index_test.html',locals())
 
 
 
@@ -103,40 +115,34 @@ def birdlist(request):
 def birdinfo(request, sortType):
     birds = bList()
     return render(request,'birdlist/birdinfo.html', locals())
-
-### guide 
+### guide
 def guide(request):
     return render(request,'guide/guide.html')
-
 def basicKnowledge(request):
     return render(request,'guide/basicKnowledge.html')
-
 def development(request):
     return render(request,'guide/development.html')
-
 def equipment(request):
     return render(request,'guide/equipment.html')
-
 def ethics(request):
     return render(request,'guide/ethics.html')
 
 ### realtime
 def realtime(request):
-    birds = bList()
     recent_msg = recent()
     return render(request,'realtime/realtime.html',locals())
 
+
+
 def info(request):
     return render(request,'realtime/info.html')
-
 def place(request):
     return render(request,'realtime/place.html')
-
 def recommend(request):
     return render(request,'realtime/recommend.html')
-
 def TWmap(request):
     return render(request,'svgMap/TWmap.html')
+
 
 ### database
 def order(request):
@@ -157,11 +163,11 @@ def order(request):
         #鳥描述
         description  = request.POST['description']
         #鳥圖片相關
-        
+
         image  = request.POST['image']
         photoby  = request.POST['photoby']
 
-        unit = BirdModel.objects.create( 
+        unit = BirdModel.objects.create(
             name=name,
             familyName=familyName,
             englishName=englishName,
@@ -180,7 +186,7 @@ def order(request):
             image=image,
             photoby=photoby
             )
-        unit.save()  
+        unit.save()
     return render(request,'order.html',locals())
 
 def upload_img(request):
@@ -200,31 +206,6 @@ def upload_img(request):
     return render(request, 'upload_img.html',locals())
 
 ### 捨棄
-def TWtownship():
-    place_data = ["臺北市", "新北市", "台中市", "臺南市", "高雄市", "基隆市",
-                  "桃園市", "新竹市", "新竹縣", "苗栗縣", "彰化縣", "南投縣",
-                  "雲林縣", "嘉義市", "嘉義縣", "屏東縣", "宜蘭縣", "花蓮縣",
-                  "台東縣", "澎湖縣", "金門縣", "連江縣"]
-    return place_data
-###
-def bList():
-    blist = [
-        {'COMMONNAME' : 'duck',
-        'SCIENTIFICNAME':'小水鴨',
-        'COUNTY':'台北',
-        'LOCALITY':'輔仁大學中美堂',
-        'LOCALITYTYPE':'校園',
-        'LATITUDE':'121.43219692276416',
-        'LONGITUDE':'25.038967086993015'},
-
-        {'COMMONNAME' : 'duck22',
-        'SCIENTIFICNAME':'小水鴨22',
-        'COUNTY':'台北22',
-        'LOCALITY':'輔仁大學中美堂22',
-        'LOCALITYTYPE':'校園22',
-        'LATITUDE':'121.43219692276416',
-        'LONGITUDE':'25.038967086993015'},]
-    return blist
 
 #### weather_API
 def weather():
@@ -265,7 +246,7 @@ def weather():
             'min_tem':min_tem,
             'comfort':comfort,
             'max_tem':max_tem}
-        
+
     return weather_msg
 
 
@@ -284,7 +265,7 @@ def recent():
 
     #print(json_to_dict)
     recent_datas = json_to_dict_ebird
-    
+
     return recent_datas
 
 ### google_API
@@ -292,7 +273,7 @@ def recent():
 ###計算兩點距離
 def distance(loc1,loc2):
     params = {
-        'key':'',
+        'key':' ',
         'origins': loc1,
         'destinations': loc2,
         'mode': 'driving', # mode: walking , driving , bicycling , transit
@@ -303,13 +284,13 @@ def distance(loc1,loc2):
 
     #print(response.text)
     json_to_dict_google = json.loads(response.text)
-    
+
     print(json_to_dict_google)
     errorMsg = "error"
     distance_datas = {
-        #'destination_addresses' : json_to_dict_google['destination_addresses'][0], 
+        #'destination_addresses' : json_to_dict_google['destination_addresses'][0],
         #'origin_addresses' : json_to_dict_google['origin_addresses'][0],
-        'origin_addresses' : loc1, 
+        'origin_addresses' : loc1,
         'destination_addresses' : loc2,
         'distance' : json_to_dict_google['rows'][0]['elements'][0]['distance']['text'],
         'duration': json_to_dict_google['rows'][0]['elements'][0]['duration']['text']}
@@ -318,10 +299,10 @@ def distance(loc1,loc2):
         return distance_datas
     else:
         return errorMsg
-    
+
 def address_to_latlng(loc):
     params = {
-        'key':'',
+        'key':' ',
         'address' : loc}
     url = 'https://maps.googleapis.com/maps/api/geocode/json?'
     response = requests.get(url, params=params)
@@ -336,7 +317,7 @@ def address_to_latlng(loc):
 def latlng_to_address(lat_lng):
     lat_lng_value = str(lat_lng['lat'])+','+str(lat_lng['lng'])
     params = {
-        'key':'',
+        'key':' ',
         'latlng' : lat_lng_value,
         'language':'zh-TW'}
     url = 'https://maps.googleapis.com/maps/api/geocode/json?'
@@ -350,7 +331,7 @@ def latlng_to_address(lat_lng):
 def get_administrative_area_level_1(lat_lng):
     lat_lng_value = str(lat_lng['lat'])+','+str(lat_lng['lng'])
     params = {
-        'key':'',
+        'key':' ',
         'latlng' : lat_lng_value,
         'language':'zh-TW'}
     url = 'https://maps.googleapis.com/maps/api/geocode/json?'
@@ -360,4 +341,3 @@ def get_administrative_area_level_1(lat_lng):
     address_components = json_to_dict_address['results'][0]['address_components']
     print(address_components)
     return address_components
-    

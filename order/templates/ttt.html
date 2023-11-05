@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>日期、時間</title>
+</head>
+
+<body onload="current_time()">
+    <span id="current"></span>
+    </body>
+    </html>
+    <script>
+    var Today=new Date();
+    function current_time(){
+    　NowDate=new Date();
+    　h=NowDate.getHours();
+    　m=NowDate.getMinutes();
+    　document.getElementById('current').innerHTML = Today.getFullYear()+ "年" + (Today.getMonth()+1) + "月" + Today.getDate() + "日 "+h+':'+m+'';
+    　setTimeout('current_time()',60000);
+    }
+　  document.write();
+    </script>
+
+</html>

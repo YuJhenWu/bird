@@ -1,0 +1,47 @@
+<svg width="769" height="649" viewBox="0 0 769 649" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M567 66V36" stroke="#FFB74A" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M469 107L447 85" stroke="#FFB74A" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M428 205H398" stroke="#FFB74A" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M469 302L447 324" stroke="#FFB74A" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M567 343V373" stroke="#FFB74A" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M664 302L686 324" stroke="#FFB74A" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M705 205H735" stroke="#FFB74A" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M664 107L686 85" stroke="#FFB74A" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+<g filter="url(#filter0_i_907_938)">
+<path d="M566 293C615.153 293 655 253.153 655 204C655 154.847 615.153 115 566 115C516.847 115 477 154.847 477 204C477 253.153 516.847 293 566 293Z" fill="#FFB74A"/>
+</g>
+<g filter="url(#filter1_ii_907_938)">
+<path d="M158.17 216.747C171.52 216.474 192.894 221.806 192.894 221.806C200.767 187.49 212.056 154.636 234.873 130.206C257.689 105.775 286.137 89.0358 316.985 81.8905C347.833 74.7451 379.844 77.4799 409.379 89.7842C438.915 102.088 464.792 123.469 484.069 151.496C497.447 174.111 499.979 183.506 511.208 220.095C603.562 178.842 698.604 294.962 655.152 383.58C626.622 441.764 579.489 451.533 553.962 456.92C510.513 466.087 382.298 456.946 350.803 456.92H161.396C133.489 456.92 87.4784 438.042 67.7447 415.835C48.011 393.628 37 367.749 37 336.344C37 304.939 48.011 277.615 67.7447 255.408C87.4784 233.202 122.5 217.478 158.17 216.747Z" fill="#909090"/>
+</g>
+<path d="M472.219 562.173L506.953 491" stroke="#ADE1F9" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M313.219 614.847L347.008 544" stroke="#ADE1F9" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M196.219 512.847L230.008 442" stroke="#ADE1F9" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+<defs>
+<filter id="filter0_i_907_938" x="470" y="111" width="185" height="182" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="-7" dy="-4"/>
+<feGaussianBlur stdDeviation="10"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.3 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_907_938"/>
+</filter>
+<filter id="filter1_ii_907_938" x="35" y="70" width="631" height="394" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="-2" dy="3"/>
+<feGaussianBlur stdDeviation="4.5"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"/>
+<feBlend mode="normal" in2="shape" result="effect1_innerShadow_907_938"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dy="-8"/>
+<feGaussianBlur stdDeviation="4.5"/>
+<feComposite in2="hardAlpha" operator="arithmetic" k2="-1" k3="1"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.2 0"/>
+<feBlend mode="normal" in2="effect1_innerShadow_907_938" result="effect2_innerShadow_907_938"/>
+</filter>
+</defs>
+</svg>
